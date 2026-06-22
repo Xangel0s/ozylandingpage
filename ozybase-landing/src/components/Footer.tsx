@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Terminal, Activity, Shield } from "lucide-react";
 
 export default function Footer() {
@@ -15,12 +16,11 @@ export default function Footer() {
           </div>
           <div className="md:col-span-6 flex flex-col md:items-end gap-8">
             <div className="flex flex-wrap gap-x-8 gap-y-4 justify-start md:justify-end">
-              <a href="#servicios" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Soporte</a>
-              <a href="#agentes" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Agentes IA</a>
-              <a href="#digitalizacion" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Digitalización</a>
-              <a href="#" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Docs</a>
-              <a href="#" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Privacy</a>
-              <a href="#" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Terms</a>
+              <Link href="/" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Inicio</Link>
+              <Link href="/soporte" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Soporte</Link>
+              <Link href="/agentes-ia" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Agentes IA</Link>
+              <Link href="/digitalizacion" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Digitalización</Link>
+              <Link href="/contacto" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Ventas</Link>
             </div>
             <div className="flex gap-4">
               <span className="w-10 h-10 rounded border border-border-subtle flex items-center justify-center text-terminal-gray hover:border-success-neon hover:text-success-neon transition-all cursor-pointer">

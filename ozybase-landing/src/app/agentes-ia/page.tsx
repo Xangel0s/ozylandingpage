@@ -1,0 +1,252 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Terminal as TerminalIcon, Radar, Cpu, Zap, Fingerprint, FolderSync, ShieldCheck, ArrowRight } from "lucide-react";
+
+export default function AgentesIa() {
+  const [logs, setLogs] = useState<string[]>([
+    'Agent "Alpha" inicializado: persistent_memory.db',
+    "Detector de anomalías: 0 violaciones en 3600s",
+    "Resolución en tiempo real: Bridge sincronizado",
+  ]);
+
+  useEffect(() => {
+    const actions = [
+      "Analizando patrones de tráfico entrante...",
+      "Estableciendo canal de memoria seguro...",
+      "Sincronizando estados entre enclaves...",
+      "Calculando matriz de latencia de red...",
+      "Consolidando logs de auditoría interna...",
+    ];
+
+    const interval = setInterval(() => {
+      const randomAction = actions[Math.floor(Math.random() * actions.length)];
+      setLogs((prevLogs) => {
+        const nextLogs = [...prevLogs];
+        if (nextLogs.length > 5) nextLogs.shift();
+        nextLogs.push(randomAction);
+        return nextLogs;
+      });
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      <main className="flex-grow bg-black">
+        
+        {/* Hero Section */}
+        <section className="relative min-h-[80vh] flex items-center pt-20 pb-32 overflow-hidden px-6 md:px-16">
+          <div className="absolute inset-0 z-0 opacity-20 matrix-grid"></div>
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-success-neon/5 blur-[100px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+
+          <div className="relative z-10 max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle rounded-full">
+                <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
+                <span className="font-mono text-xs text-success-neon uppercase tracking-widest">
+                  Autonomous Core Active
+                </span>
+              </div>
+              <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight">
+                Agentes IA & <br />
+                <span className="text-success-neon">Monitoreo Autónomo</span>
+              </h1>
+              <p className="text-terminal-gray text-base md:text-lg max-w-xl leading-relaxed">
+                Elimina la vigilancia manual. Nuestros binarios especializados proporcionan memoria persistente e inteligencia de contexto para gestionar tu infraestructura de forma autónoma 24/7.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/contacto"
+                  className="bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:brightness-110 active:scale-95 transition-all flex items-center justify-center"
+                >
+                  DESPLEGAR AGENTES
+                </a>
+              </div>
+            </div>
+
+            {/* Simulated Live Terminal */}
+            <div className="lg:col-span-5 w-full">
+              <div className="p-6 bg-[#141414] border border-border-subtle rounded-xl relative overflow-hidden">
+                <div className="scan-line"></div>
+                <div className="flex items-center justify-between mb-6 border-b border-border-subtle pb-4">
+                  <span className="font-mono text-xs text-white uppercase tracking-widest flex items-center gap-2">
+                    <TerminalIcon className="w-4 h-4 text-success-neon" />
+                    Terminal_Live
+                  </span>
+                  <span className="font-mono text-[10px] text-terminal-gray">REGION: EU-WEST-1</span>
+                </div>
+                <div className="space-y-3 font-mono text-xs text-terminal-gray min-h-[160px]">
+                  {logs.map((log, idx) => (
+                    <div
+                      key={idx}
+                      className={`flex gap-3 p-2 rounded transition-all duration-300 ${
+                        idx === logs.length - 1 ? "bg-success-neon/5 border-l-2 border-success-neon text-white" : "bg-black/20"
+                      }`}
+                    >
+                      <span className="text-success-neon font-bold">
+                        {idx === logs.length - 1 ? "[EXEC]" : "[OK]"}
+                      </span>
+                      <span>{log}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Core Features Section */}
+        <section className="py-24 bg-[#0a0a0a] border-t border-border-subtle">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-16">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+              <div className="max-w-2xl space-y-4">
+                <span className="font-mono text-xs text-success-neon uppercase tracking-widest block">
+                  Competencias Core
+                </span>
+                <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
+                  Binarios Especializados y Resolución en Tiempo Real
+                </h2>
+              </div>
+              <div className="text-terminal-gray text-sm md:text-base max-w-sm font-sans">
+                El monitoreo estándar es reactivo. Los agentes de OzyBase son capas de infraestructura autónomas que operan sin intervención humana.
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Card 1 */}
+              <div className="group p-8 bg-[#141414] border border-border-subtle rounded-xl flex flex-col h-full hover:border-success-neon/30 transition-colors">
+                <div className="w-12 h-12 bg-success-neon/10 border border-success-neon/20 rounded flex items-center justify-center mb-8 transition-transform group-hover:scale-105">
+                  <Radar className="w-6 h-6 text-success-neon" />
+                </div>
+                <h4 className="font-headline text-xl font-bold text-white mb-4">Monitoreo Autónomo</h4>
+                <p className="text-terminal-gray text-sm md:text-base mb-8 flex-grow">
+                  Sistemas de detección proactiva 24/7. Cada paquete y cambio de estado es analizado por modelos de regresión no lineal en tiempo real.
+                </p>
+                <ul className="space-y-3 font-mono text-xs text-white">
+                  <li className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-success-neon" />
+                    Alerta de anomalías con latencia cero
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-success-neon" />
+                    Predicción de tiempos de inactividad
+                  </li>
+                </ul>
+              </div>
+
+              {/* Card 2 */}
+              <div className="group p-8 bg-[#141414] border border-border-subtle rounded-xl flex flex-col h-full hover:border-success-neon/30 transition-colors">
+                <div className="w-12 h-12 bg-success-neon/10 border border-success-neon/20 rounded flex items-center justify-center mb-8 transition-transform group-hover:scale-105">
+                  <Cpu className="w-6 h-6 text-success-neon" />
+                </div>
+                <h4 className="font-headline text-xl font-bold text-white mb-4">Binarios con Memoria</h4>
+                <p className="text-terminal-gray text-sm md:text-base mb-8 flex-grow">
+                  Inteligencia consciente del contexto que aprende de incidentes previos. Nuestros agentes almacenan el historial de estado para diferenciar picos de amenazas reales.
+                </p>
+                <ul className="space-y-3 font-mono text-xs text-white">
+                  <li className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-success-neon" />
+                    Preservación de contexto a largo plazo
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-success-neon" />
+                    Reconocimiento de patrones complejos
+                  </li>
+                </ul>
+              </div>
+
+              {/* Card 3 */}
+              <div className="group p-8 bg-[#141414] border border-border-subtle rounded-xl flex flex-col h-full hover:border-success-neon/30 transition-colors">
+                <div className="w-12 h-12 bg-success-neon/10 border border-success-neon/20 rounded flex items-center justify-center mb-8 transition-transform group-hover:scale-105">
+                  <Zap className="w-6 h-6 text-success-neon" />
+                </div>
+                <h4 className="font-headline text-xl font-bold text-white mb-4">Resolución en Tiempo Real</h4>
+                <p className="text-terminal-gray text-sm md:text-base mb-8 flex-grow">
+                  Mitigación automatizada de crisis. Cuando se superan los umbrales críticos, los agentes activan protocolos de remediación definidos instantáneamente.
+                </p>
+                <ul className="space-y-3 font-mono text-xs text-white">
+                  <li className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-success-neon" />
+                    Mecanismos de defensa auto-escalables
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-success-neon" />
+                    Secuencias de rollback instantáneas
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Technical Reliability Section */}
+        <section className="py-24 overflow-hidden bg-black border-t border-border-subtle">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+            <div className="relative order-2 md:order-1 flex justify-center">
+              <div className="w-full max-w-sm aspect-square bg-[#141414] rounded-xl border border-border-subtle overflow-hidden flex items-center justify-center relative">
+                <div className="absolute inset-0 matrix-grid opacity-15"></div>
+                <div className="z-10 text-center p-8">
+                  <div className="text-[80px] font-extrabold text-success-neon opacity-10 leading-none mb-4 font-mono">99.99%</div>
+                  <h4 className="font-headline text-xl font-bold text-white mb-2">Confiabilidad Extrema</h4>
+                  <p className="text-terminal-gray text-sm font-sans">Nuestra infraestructura core es descentralizada. Si un agente cae, diez más se sincronizan para cubrir la brecha.</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-8 order-1 md:order-2">
+              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
+                Integridad Técnica por Diseño
+              </h2>
+              <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans">
+                No solo construimos software; creamos ecosistemas autónomos. Los agentes de OzyBase están desarrollados en binarios de bajo nivel para un rendimiento máximo.
+              </p>
+              <div className="space-y-6">
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full border border-success-neon flex items-center justify-center">
+                    <Fingerprint className="w-3.5 h-3.5 text-success-neon" />
+                  </div>
+                  <div>
+                    <h5 className="font-headline text-base font-bold text-white mb-1">Persistencia de Estado Encriptada</h5>
+                    <p className="text-terminal-gray text-sm md:text-base">Toda la memoria de contexto se almacena en enclaves encriptados por hardware, asegurando velocidad y seguridad.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full border border-success-neon flex items-center justify-center">
+                    <FolderSync className="w-3.5 h-3.5 text-success-neon" />
+                  </div>
+                  <div>
+                    <h5 className="font-headline text-base font-bold text-white mb-1">Cadenas de Lógica Autónoma</h5>
+                    <p className="text-terminal-gray text-sm md:text-base">Lógica de auto-sanación que actualiza y parchea el core de monitoreo sin tiempos de inactividad.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-24 bg-success-neon text-black">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-16 text-center space-y-8">
+            <h2 className="font-headline text-3xl md:text-5xl font-extrabold uppercase tracking-tight">¿Listo para asegurar el core?</h2>
+            <p className="text-black/85 text-base md:text-lg max-w-2xl mx-auto font-sans">
+              Únete a la red especializada y despliega tu primer cluster de agentes autónomos hoy mismo.
+            </p>
+            <div className="flex justify-center">
+              <a
+                href="/contacto"
+                className="bg-black text-white px-10 py-5 rounded font-mono text-sm font-bold hover:bg-black/90 transition-colors"
+              >
+                CONTACTAR VENTAS
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
