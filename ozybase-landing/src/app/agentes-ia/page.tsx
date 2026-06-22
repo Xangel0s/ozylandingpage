@@ -1,39 +1,18 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Terminal as TerminalIcon, Radar, Cpu, Zap, Fingerprint, FolderSync, ShieldCheck, ArrowRight } from "lucide-react";
+import TerminalLogs from "@/components/TerminalLogs";
+import { Radar, Cpu, Zap, Fingerprint, FolderSync, ShieldCheck } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Agentes de IA y Monitoreo Autónomo | OzyBase",
+  description: "Elimina el monitoreo manual. Despliega binarios especializados de baja latencia con memoria persistente para vigilar tu infraestructura 24/7.",
+  alternates: {
+    canonical: "https://ozybase.com/agentes-ia",
+  },
+};
 
 export default function AgentesIa() {
-  const [logs, setLogs] = useState<string[]>([
-    'Agent "Alpha" inicializado: persistent_memory.db',
-    "Detector de anomalías: 0 violaciones en 3600s",
-    "Resolución en tiempo real: Bridge sincronizado",
-  ]);
-
-  useEffect(() => {
-    const actions = [
-      "Analizando patrones de tráfico entrante...",
-      "Estableciendo canal de memoria seguro...",
-      "Sincronizando estados entre enclaves...",
-      "Calculando matriz de latencia de red...",
-      "Consolidando logs de auditoría interna...",
-    ];
-
-    const interval = setInterval(() => {
-      const randomAction = actions[Math.floor(Math.random() * actions.length)];
-      setLogs((prevLogs) => {
-        const nextLogs = [...prevLogs];
-        if (nextLogs.length > 5) nextLogs.shift();
-        nextLogs.push(randomAction);
-        return nextLogs;
-      });
-    }, 4500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
       <Navbar />
@@ -62,7 +41,7 @@ export default function AgentesIa() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/contacto"
-                  className="bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:brightness-110 active:scale-95 transition-all flex items-center justify-center"
+                  className="bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:brightness-110 active:scale-95 transition-all flex items-center justify-center animate-none"
                 >
                   DESPLEGAR AGENTES
                 </a>
@@ -71,31 +50,7 @@ export default function AgentesIa() {
 
             {/* Simulated Live Terminal */}
             <div className="lg:col-span-5 w-full">
-              <div className="p-6 bg-[#141414] border border-border-subtle rounded-xl relative overflow-hidden">
-                <div className="scan-line"></div>
-                <div className="flex items-center justify-between mb-6 border-b border-border-subtle pb-4">
-                  <span className="font-mono text-xs text-white uppercase tracking-widest flex items-center gap-2">
-                    <TerminalIcon className="w-4 h-4 text-success-neon" />
-                    Terminal_Live
-                  </span>
-                  <span className="font-mono text-[10px] text-terminal-gray">REGION: EU-WEST-1</span>
-                </div>
-                <div className="space-y-3 font-mono text-xs text-terminal-gray min-h-[160px]">
-                  {logs.map((log, idx) => (
-                    <div
-                      key={idx}
-                      className={`flex gap-3 p-2 rounded transition-all duration-300 ${
-                        idx === logs.length - 1 ? "bg-success-neon/5 border-l-2 border-success-neon text-white" : "bg-black/20"
-                      }`}
-                    >
-                      <span className="text-success-neon font-bold">
-                        {idx === logs.length - 1 ? "[EXEC]" : "[OK]"}
-                      </span>
-                      <span>{log}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <TerminalLogs />
             </div>
           </div>
         </section>
@@ -232,7 +187,7 @@ export default function AgentesIa() {
         <section className="py-24 bg-success-neon text-black">
           <div className="max-w-[1280px] mx-auto px-6 md:px-16 text-center space-y-8">
             <h2 className="font-headline text-3xl md:text-5xl font-extrabold uppercase tracking-tight">¿Listo para asegurar el core?</h2>
-            <p className="text-black/85 text-base md:text-lg max-w-2xl mx-auto font-sans">
+            <p className="text-black/85 text-base md:text-lg max-w-2xl mx-auto font-sans font-medium">
               Únete a la red especializada y despliega tu primer cluster de agentes autónomos hoy mismo.
             </p>
             <div className="flex justify-center">

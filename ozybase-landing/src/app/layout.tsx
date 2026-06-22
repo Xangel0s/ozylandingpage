@@ -33,8 +33,12 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased dark`}
       style={{ colorScheme: "dark" }}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-success-neon selection:text-black">
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground selection:bg-success-neon selection:text-black"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

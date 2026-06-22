@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Server, TrendingUp, ShieldAlert, ArrowRight, ShieldCheck, HelpCircle, Activity, Bolt, BookOpen, Shield, CheckCircle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Soporte Técnico de Élite 24/7 | OzyBase",
+  description: "Protegemos tu infraestructura crítica con ingenieros de Nivel 3. Garantizamos alta disponibilidad y resolución rápida de incidencias con SLAs dedicados.",
+  alternates: {
+    canonical: "https://ozybase.com/soporte",
+  },
+};
 
 export default function Soporte() {
   return (

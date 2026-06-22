@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { BarChart, Server, Layers, Link as LinkIcon, Database, ArrowRight, Play, CheckCircle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Digitalización de Procesos y Migración de Excel | OzyBase",
+  description: "Transformamos tus hojas de cálculo manuales de Excel en arquitecturas web rápidas, seguras y de precisión matemática absoluta en la nube.",
+  alternates: {
+    canonical: "https://ozybase.com/digitalizacion",
+  },
+};
 
 export default function Digitalizacion() {
   return (
