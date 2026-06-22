@@ -45,7 +45,7 @@ export default function BentoFeatures() {
           {cards.map((card, index) => (
             <div
               key={index}
-              className="glass-card rounded-xl p-8 flex flex-col justify-between h-full border border-border-subtle group hover:scale-[1.01]"
+              className="glass-card rounded-xl p-8 flex flex-col justify-between h-full border border-border-subtle group hover:scale-[1.01] scroll-reveal"
             >
               <div>
                 <div className="w-12 h-12 rounded bg-surface border border-border-subtle flex items-center justify-center mb-6 transition-transform group-hover:scale-105">

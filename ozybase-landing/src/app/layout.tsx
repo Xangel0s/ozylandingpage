@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Inter, JetBrains_Mono } from "next/font/google";
+import ScrollRevealManager from "@/components/ScrollRevealManager";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -39,6 +40,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-background text-foreground selection:bg-success-neon selection:text-black"
         suppressHydrationWarning
       >
+        <ScrollRevealManager />
         {children}
       </body>
     </html>

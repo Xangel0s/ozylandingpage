@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Bolt, Cpu, ShieldCheck } from "lucide-react";
 
 export default function TechnicalAdvantage() {
@@ -58,7 +59,7 @@ export default function TechnicalAdvantage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {/* Service Level Standards */}
-          <div className="glass-card rounded-xl p-8 col-span-1 md:col-span-2 relative overflow-hidden flex flex-col justify-between">
+          <div className="glass-card rounded-xl p-8 col-span-1 md:col-span-2 relative overflow-hidden flex flex-col justify-between scroll-reveal">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-success-neon to-transparent"></div>
             <h3 className="font-mono text-xs text-success-neon uppercase tracking-widest mb-8">
               Service Level Standards
@@ -110,7 +111,7 @@ export default function TechnicalAdvantage() {
           </div>
 
           {/* Key Advantages Summary */}
-          <div className="glass-card rounded-xl p-8 flex flex-col justify-between border border-border-subtle">
+          <div className="glass-card rounded-xl p-8 flex flex-col justify-between border border-border-subtle scroll-reveal">
             <div className="space-y-6">
               <h4 className="font-mono text-xs text-success-neon uppercase tracking-widest">
                 Monitoreo con IA Pro
@@ -144,12 +145,12 @@ export default function TechnicalAdvantage() {
               Elimina los registros en papel y Excels vulnerables. Diseñamos herramientas web en enclaves seguros de alta precisión para tu flujo de trabajo diario.
             </p>
           </div>
-          <a
-            href="#contacto"
+          <Link
+            href="/digitalizacion"
             className="bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-opacity-95 transition-all flex items-center gap-2 whitespace-nowrap self-stretch md:self-auto justify-center"
           >
             <span>Saber Más</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
