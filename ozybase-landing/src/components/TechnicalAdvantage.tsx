@@ -87,7 +87,7 @@ export default function TechnicalAdvantage() {
 
               <div className="bg-[#141414] border border-border-subtle p-6 rounded flex flex-col items-center justify-center text-center hover:border-success-neon/30 transition-colors">
                 <div className="font-mono text-3xl md:text-4.5xl font-extrabold text-white mb-2 select-none">
-                  24/7/365
+                  24/7
                 </div>
                 <div className="font-mono text-[10px] text-terminal-gray uppercase tracking-widest">
                   Support Active
