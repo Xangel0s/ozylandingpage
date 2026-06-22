@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Bolt, Cpu, ShieldCheck } from "lucide-react";
+import { Bolt } from "lucide-react";
 
 export default function TechnicalAdvantage() {
   const [uptime, setUptime] = useState("99.9");
@@ -46,21 +46,19 @@ export default function TechnicalAdvantage() {
     <section className="py-24 px-6 md:px-16 bg-[#0c0c0c] border-y border-border-subtle">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-16 text-center max-w-3xl mx-auto space-y-4">
-          <span className="font-mono text-xs text-success-neon uppercase tracking-widest block">
+          <span className="font-mono text-xs text-success-neon uppercase tracking-widest block reveal-left">
             Métricas de Infraestructura
           </span>
-          <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
+          <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight reveal-left">
             Excelencia Operativa en Tiempo Real
           </h2>
-          <p className="text-terminal-gray text-base md:text-lg">
+          <p className="text-terminal-gray text-base md:text-lg reveal-right">
             Monitoreamos y optimizamos constantemente los indicadores clave de rendimiento para garantizar la disponibilidad absoluta de tu ecosistema tecnológico.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        </div>        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {/* Service Level Standards */}
-          <div className="glass-card rounded-xl p-8 col-span-1 md:col-span-2 relative overflow-hidden flex flex-col justify-between scroll-reveal">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-success-neon to-transparent"></div>
+          <div className="glass-card rounded-xl p-8 col-span-1 md:col-span-2 relative overflow-hidden flex flex-col justify-between reveal-left">
+            <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-success-neon to-transparent"></div>
             <h3 className="font-mono text-xs text-success-neon uppercase tracking-widest mb-8">
               Service Level Standards
             </h3>
@@ -111,7 +109,7 @@ export default function TechnicalAdvantage() {
           </div>
 
           {/* Key Advantages Summary */}
-          <div className="glass-card rounded-xl p-8 flex flex-col justify-between border border-border-subtle scroll-reveal">
+          <div className="glass-card rounded-xl p-8 flex flex-col justify-between border border-border-subtle reveal-right">
             <div className="space-y-6">
               <h4 className="font-mono text-xs text-success-neon uppercase tracking-widest">
                 Monitoreo con IA Pro
@@ -133,7 +131,7 @@ export default function TechnicalAdvantage() {
         </div>
 
         {/* Custom custom layout decoration */}
-        <div className="mt-8 bg-gradient-to-br from-[#141414] to-[#1a1c0d] border border-[#2a2f10] p-8 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="mt-8 bg-linear-to-br from-[#141414] to-[#1a1c0d] border border-[#2a2f10] p-8 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8 scroll-reveal">
           <div className="space-y-4">
             <div className="w-10 h-10 rounded bg-success-neon text-black flex items-center justify-center">
               <Bolt className="w-5 h-5" />

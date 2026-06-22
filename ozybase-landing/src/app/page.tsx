@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow">
+      <main className="grow">
         <HeroSection />
         <TrustedBy />
         <BentoFeatures />

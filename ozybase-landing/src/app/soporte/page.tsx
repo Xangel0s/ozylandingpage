@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Server, TrendingUp, ShieldAlert, ArrowRight, ShieldCheck, HelpCircle, Activity, Bolt, BookOpen, Shield, CheckCircle } from "lucide-react";
+import CTA from "@/components/CTA";
+import { Server, TrendingUp, ShieldAlert, ArrowRight, Bolt, BookOpen, Shield, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Soporte Técnico Profesional 24/7 | OzyBase",
@@ -15,22 +16,33 @@ export default function Soporte() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow bg-black">
+      <main className="grow bg-black">
         {/* Support Hero Section */}
         <header className="relative min-h-[75vh] flex items-center overflow-hidden border-b border-border-subtle">
           <div className="absolute inset-0 z-0 opacity-20 matrix-grid"></div>
+          
+          {/* Background Video */}
+          <video
+            src="/Videos/soporte.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-12 pointer-events-none mix-blend-luminosity grayscale"
+          />
+          
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-success-neon/5 blur-[100px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
           <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-16 w-full grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle text-success-neon font-mono text-xs rounded-full">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle text-success-neon font-mono text-xs rounded-full reveal-left">
                 <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
                 SISTEMAS OPERATIVOS 24/7
               </div>
-              <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight">
+              <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight reveal-left">
                 Soporte Técnico <span className="text-success-neon">Profesional</span>
               </h1>
-              <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans">
+              <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans reveal-right">
                 Infraestructura crítica protegida por ingenieros de Nivel 3. Garantizamos alta disponibilidad y resolución de incidencias en tiempos récord mediante protocolos de redundancia activa.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
@@ -69,19 +81,19 @@ export default function Soporte() {
           <div className="max-w-[1280px] mx-auto px-6 md:px-16">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
               <div className="space-y-4">
-                <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">Segmentación de Servicios</h2>
-                <p className="text-terminal-gray text-base md:text-lg max-w-xl">
+                <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight reveal-left">Segmentación de Servicios</h2>
+                <p className="text-terminal-gray text-base md:text-lg max-w-xl reveal-right">
                   Arquitectura de soporte diseñada para escalar según la complejidad de su despliegue tecnológico.
                 </p>
               </div>
               <div className="font-mono text-xs text-success-neon/40 select-none">
-                // PROTOCOL_04 // SUPPORT_TIERS
+                {"// PROTOCOL_04 // SUPPORT_TIERS"}
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* grandes empresas */}
-              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden">
+              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden reveal-left">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <Server className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-xl md:text-2xl font-bold text-white">
@@ -101,7 +113,7 @@ export default function Soporte() {
               </div>
 
               {/* pymes */}
-              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden">
+              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden scroll-reveal">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <TrendingUp className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-xl md:text-2xl font-bold text-white">
@@ -121,7 +133,7 @@ export default function Soporte() {
               </div>
 
               {/* soluciones integrales */}
-              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden">
+              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden reveal-right">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <ShieldAlert className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-xl md:text-2xl font-bold text-white">
@@ -169,14 +181,14 @@ export default function Soporte() {
         <section className="py-24 bg-[#0a0a0a]">
           <div className="max-w-[1280px] mx-auto px-6 md:px-16">
             <div className="mb-16">
-              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight mb-4">
+              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight mb-4 reveal-left">
                 Compromiso de Confianza y Seguridad
               </h2>
               <div className="h-1 w-24 bg-success-neon"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Block 1: Gestión de Incidencias */}
-              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden">
+              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden reveal-left">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <Bolt className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-lg md:text-xl font-bold text-white">Gestión de Incidencias</h3>
@@ -185,7 +197,7 @@ export default function Soporte() {
                 </p>
               </div>
               {/* Block 2: Transparencia Total */}
-              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden">
+              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden scroll-reveal">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <BookOpen className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-lg md:text-xl font-bold text-white">Transparencia Total</h3>
@@ -194,7 +206,7 @@ export default function Soporte() {
                 </p>
               </div>
               {/* Block 3: Normas de Seguridad */}
-              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden">
+              <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden reveal-right">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <Shield className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-lg md:text-xl font-bold text-white">Normas de Seguridad</h3>
@@ -205,6 +217,12 @@ export default function Soporte() {
             </div>
           </div>
         </section>
+
+        <CTA
+          title="¿Listo para transformar tu infraestructura?"
+          description="Únete a las empresas que ya optimizan su productividad con nuestro equipo de expertos."
+          ctaText="CONTACTAR CON VENTAS"
+        />
       </main>
       <Footer />
     </>

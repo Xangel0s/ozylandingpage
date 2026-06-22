@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Terminal, Activity, Shield } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -22,17 +21,6 @@ export default function Footer() {
               <Link href="/agentes-ia" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Agentes IA</Link>
               <Link href="/digitalizacion" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Digitalización</Link>
               <Link href="/contacto" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Ventas</Link>
-            </div>
-            <div className="flex gap-4">
-              <span className="w-10 h-10 rounded border border-border-subtle flex items-center justify-center text-terminal-gray hover:border-success-neon hover:text-success-neon transition-all cursor-pointer">
-                <Activity className="w-4 h-4" />
-              </span>
-              <span className="w-10 h-10 rounded border border-border-subtle flex items-center justify-center text-terminal-gray hover:border-success-neon hover:text-success-neon transition-all cursor-pointer">
-                <Terminal className="w-4 h-4" />
-              </span>
-              <span className="w-10 h-10 rounded border border-border-subtle flex items-center justify-center text-terminal-gray hover:border-success-neon hover:text-success-neon transition-all cursor-pointer">
-                <Shield className="w-4 h-4" />
-              </span>
             </div>
           </div>
         </div>

@@ -1,7 +1,6 @@
 import {
   ShieldAlert,
   Server,
-  Zap,
   CheckCircle,
   FolderSync,
   Fingerprint,
@@ -27,7 +26,7 @@ export default function ServiceDetails() {
               </h2>
             </div>
             <div className="font-mono text-xs text-success-neon/40 select-none">
-              // PROTOCOL_04 // SUPPORT_TIERS
+              {"// PROTOCOL_04 // SUPPORT_TIERS"}
             </div>
           </div>
 
@@ -112,7 +111,7 @@ export default function ServiceDetails() {
 
               <div className="space-y-6">
                 <div className="flex gap-4 items-start">
-                  <div className="mt-1 flex-shrink-0 w-8 h-8 rounded border border-success-neon/30 flex items-center justify-center">
+                  <div className="mt-1 shrink-0 w-8 h-8 rounded border border-success-neon/30 flex items-center justify-center">
                     <Fingerprint className="w-4 h-4 text-success-neon" />
                   </div>
                   <div>
@@ -126,7 +125,7 @@ export default function ServiceDetails() {
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="mt-1 flex-shrink-0 w-8 h-8 rounded border border-success-neon/30 flex items-center justify-center">
+                  <div className="mt-1 shrink-0 w-8 h-8 rounded border border-success-neon/30 flex items-center justify-center">
                     <FolderSync className="w-4 h-4 text-success-neon" />
                   </div>
                   <div>
@@ -181,7 +180,7 @@ export default function ServiceDetails() {
               <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 rounded flex items-center justify-center mb-8">
                 <FileCheck className="w-5 h-5 text-success-neon" />
               </div>
-              <h3 className="font-headline text-lg font-bold text-white mb-4 uppercase tracking-wider font-mono">
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wider font-mono">
                 1. Análisis
               </h3>
               <p className="text-terminal-gray text-sm md:text-base">
@@ -194,7 +193,7 @@ export default function ServiceDetails() {
               <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 rounded flex items-center justify-center mb-8">
                 <Code2 className="w-5 h-5 text-success-neon" />
               </div>
-              <h3 className="font-headline text-lg font-bold text-white mb-4 uppercase tracking-wider font-mono">
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wider font-mono">
                 2. Desarrollo
               </h3>
               <p className="text-terminal-gray text-sm md:text-base">
@@ -207,7 +206,7 @@ export default function ServiceDetails() {
               <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 rounded flex items-center justify-center mb-8">
                 <CloudLightning className="w-5 h-5 text-success-neon" />
               </div>
-              <h3 className="font-headline text-lg font-bold text-white mb-4 uppercase tracking-wider font-mono">
+              <h3 className="text-lg font-bold text-white mb-4 uppercase tracking-wider font-mono">
                 3. Despliegue
               </h3>
               <p className="text-terminal-gray text-sm md:text-base">

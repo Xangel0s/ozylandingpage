@@ -23,7 +23,7 @@ export default function ScrollRevealManager() {
     }, observerOptions);
 
     // Find all scroll-reveal elements
-    const revealElements = document.querySelectorAll(".scroll-reveal");
+    const revealElements = document.querySelectorAll(".scroll-reveal, .reveal-left, .reveal-right");
     revealElements.forEach((el) => {
       observer.observe(el);
     });

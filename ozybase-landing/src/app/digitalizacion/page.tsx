@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { BarChart, Server, Layers, Link as LinkIcon, Database, ArrowRight, Play, CheckCircle } from "lucide-react";
+import CTA from "@/components/CTA";
+import { BarChart, Server, Layers, Play, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Digitalización de Procesos y Migración de Excel | OzyBase",
@@ -15,23 +16,34 @@ export default function Digitalizacion() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow bg-black">
+      <main className="grow bg-black">
         {/* Hero Section */}
         <section className="relative min-h-[80vh] flex items-center pt-20 pb-32 overflow-hidden px-6 md:px-16">
           <div className="absolute inset-0 z-0 opacity-20 grid-background"></div>
+          
+          {/* Background Video */}
+          <video
+            src="/Videos/Reuniondashboard.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0 opacity-12 pointer-events-none mix-blend-luminosity grayscale"
+          />
+          
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-success-neon/5 blur-[100px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
           <div className="max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-block px-3 py-1 bg-success-neon/10 border border-success-neon/20 rounded">
+              <div className="inline-block px-3 py-1 bg-success-neon/10 border border-success-neon/20 rounded reveal-left">
                 <span className="font-mono text-xs text-success-neon uppercase tracking-widest">
                   Migración de Datos v2.4
                 </span>
               </div>
-              <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight">
+              <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight reveal-left">
                 Digitalización de Procesos: <span className="text-success-neon">Adiós al Excel Manual</span>
               </h1>
-              <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans">
+              <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans reveal-right">
                 Transformamos formatos manuales y hojas de cálculo en arquitecturas de programación modernas. Eliminamos el error humano mediante la automatización integral de tus flujos de trabajo heredados.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -48,7 +60,7 @@ export default function Digitalizacion() {
             <div className="lg:col-span-6 relative h-[350px] lg:h-[450px] w-full">
               <div className="w-full h-full rounded-xl border border-border-subtle bg-[#141414] overflow-hidden relative group">
                 <div className="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-luminosity filter grayscale" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida/AP1WRLuFBhkKlSibpIlfI2b1Jdkiriyc-CQIPsY4Lk3iPHVM80-QZkFKDBDbzGgIaT2UpNaiK6djdYFbPeS7KYY7ojdaExHOqYLJhRh3uUwbS-pWu0Z9NgHAfYHG4A3K_LgEKfmBsDoG_JRJGivgfymIGiwdqOcdLMzfo6xLRMdI3rzqfYg-Ua9Q4OWoCwedT5lwTJkVN0_kO3rZ-bvfvdsj29QKrEp05j3cEuzc3D4IdFR9F8OXvNUSRE_Tv9s')" }}></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"></div>
                 {/* Overlay UI elements */}
                 <div className="absolute top-4 left-4 bg-black/85 backdrop-blur p-4 border border-border-subtle rounded-lg max-w-[220px]">
                   <div className="flex items-center gap-2 mb-2">
@@ -69,20 +81,20 @@ export default function Digitalizacion() {
         <section className="py-24 bg-[#0a0a0a] border-t border-border-subtle">
           <div className="max-w-[1280px] mx-auto px-6 md:px-16">
             <div className="text-center mb-16 space-y-4">
-              <span className="font-mono text-xs text-success-neon uppercase tracking-widest block">Metodología de Trabajo</span>
-              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">Arquitectura de Transformación</h2>
-              <p className="text-terminal-gray text-base md:text-lg max-w-2xl mx-auto">
+              <span className="font-mono text-xs text-success-neon uppercase tracking-widest block reveal-left">Metodología de Trabajo</span>
+              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight reveal-left">Arquitectura de Transformación</h2>
+              <p className="text-terminal-gray text-base md:text-lg max-w-2xl mx-auto reveal-right">
                 Nuestro proceso técnico garantiza una transición sin fricciones de celdas manuales y formularios a sistemas automatizados de alto rendimiento.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Analysis */}
-              <div className="bg-[#141414] p-8 border border-border-subtle relative group rounded-lg hover:border-success-neon/30 transition-all">
+              <div className="bg-[#141414] p-8 border border-border-subtle relative group rounded-lg hover:border-success-neon/30 transition-all reveal-left">
                 <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 flex items-center justify-center mb-8 rounded">
                   <BarChart className="w-5 h-5 text-success-neon" />
                 </div>
-                <h3 className="font-headline text-xl font-bold text-white mb-4 uppercase tracking-wider font-mono">
+                <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-wider font-mono">
                   1. Analysis
                 </h3>
                 <p className="text-terminal-gray text-sm md:text-base mb-6">
@@ -99,11 +111,11 @@ export default function Digitalizacion() {
               </div>
 
               {/* Development */}
-              <div className="bg-[#141414] p-8 border border-border-subtle relative group rounded-lg hover:border-success-neon/30 transition-all">
+              <div className="bg-[#141414] p-8 border border-border-subtle relative group rounded-lg hover:border-success-neon/30 transition-all scroll-reveal">
                 <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 flex items-center justify-center mb-8 rounded">
                   <Server className="w-5 h-5 text-success-neon" />
                 </div>
-                <h3 className="font-headline text-xl font-bold text-white mb-4 uppercase tracking-wider font-mono">
+                <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-wider font-mono">
                   2. Development
                 </h3>
                 <p className="text-terminal-gray text-sm md:text-base mb-6">
@@ -120,11 +132,11 @@ export default function Digitalizacion() {
               </div>
 
               {/* Deployment */}
-              <div className="bg-[#141414] p-8 border border-border-subtle relative group rounded-lg hover:border-success-neon/30 transition-all">
+              <div className="bg-[#141414] p-8 border border-border-subtle relative group rounded-lg hover:border-success-neon/30 transition-all reveal-right">
                 <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 flex items-center justify-center mb-8 rounded">
                   <Layers className="w-5 h-5 text-success-neon" />
                 </div>
-                <h3 className="font-headline text-xl font-bold text-white mb-4 uppercase tracking-wider font-mono">
+                <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-wider font-mono">
                   3. Deployment
                 </h3>
                 <p className="text-terminal-gray text-sm md:text-base mb-6">
@@ -165,34 +177,11 @@ export default function Digitalizacion() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="py-24 px-6 md:px-16 overflow-hidden bg-[#0a0a0a] border-t border-border-subtle">
-          <div className="max-w-4xl mx-auto bg-[#141414] border border-border-subtle p-12 md:p-20 text-center relative rounded-xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-success-neon/5 to-transparent pointer-events-none"></div>
-            <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white mb-6">¿Listo para digitalizar tu infraestructura?</h2>
-            <p className="text-terminal-gray text-sm md:text-base mb-10 max-w-xl mx-auto font-sans">
-              Inicia hoy la migración de tus procesos manuales a una arquitectura moderna, escalable y automatizada.
-            </p>
-            <a
-              href="/contacto"
-              className="bg-success-neon text-black font-mono text-sm font-bold px-10 py-5 rounded hover:brightness-110 active:scale-95 transition-all inline-flex items-center gap-4"
-            >
-              Contactar con ventas
-              <ArrowRight className="w-4 h-4" />
-            </a>
-
-            {/* Atmospheric code snippet decoration */}
-            <div className="mt-16 text-left opacity-20 pointer-events-none hidden md:block border-t border-border-subtle/30 pt-6">
-              <pre className="font-mono text-[10px] leading-relaxed text-success-neon overflow-hidden h-24"><code>{`class ExcelTransform(Infrastructure):
-    def migrate(self, workbook):
-        data = self.ingest(workbook.sheets)
-        validated = self.security_layer.verify(data)
-        return self.deploy_to_ozybase(validated)
-
-# Executing transformation protocol: Excel to Modern Architecture...`}</code></pre>
-            </div>
-          </div>
-        </section>
+        <CTA
+          title="¿Listo para transformar tu infraestructura?"
+          description="Únete a las empresas que ya optimizan su productividad con nuestro equipo de expertos."
+          ctaText="CONTACTAR CON VENTAS"
+        />
       </main>
       <Footer />
     </>

@@ -26,6 +26,16 @@ export default function ContactForm() {
 
   return (
     <section className="relative py-24 bg-black overflow-hidden border-t border-border-subtle" id="contacto">
+      {/* Background Video */}
+      <video
+        src="/Videos/Codes.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-12 pointer-events-none mix-blend-luminosity grayscale"
+      />
+
       {/* Background decoration */}
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
         <div className="terminal-grid absolute inset-0"></div>
@@ -112,7 +122,7 @@ export default function ContactForm() {
 
               {status === "success" ? (
                 /* Success Message State */
-                <div className="flex-grow flex flex-col items-center justify-center text-center p-6 space-y-6">
+                <div className="grow flex flex-col items-center justify-center text-center p-6 space-y-6">
                   <div className="w-20 h-20 bg-success-neon/10 rounded-full flex items-center justify-center">
                     <CheckCircle2 className="w-12 h-12 text-success-neon" />
                   </div>
@@ -141,7 +151,7 @@ export default function ContactForm() {
                 </div>
               ) : (
                 /* Form State */
-                <form onSubmit={handleSubmit} className="space-y-6 flex-grow">
+                <form onSubmit={handleSubmit} className="space-y-6 grow">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                       <label className="font-mono text-xs text-terminal-gray uppercase">
