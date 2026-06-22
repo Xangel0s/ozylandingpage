@@ -39,7 +39,7 @@ export default function BentoFeatures() {
             Soluciones de Ingeniería Avanzada
           </h2>
           <p className="text-terminal-gray text-base md:text-lg">
-            Combinamos el soporte de élite humano con agentes autónomos de inteligencia artificial para asegurar la resiliencia operativa de tu negocio.
+            Combinamos el soporte profesional humano con agentes autónomos de inteligencia artificial para asegurar la resiliencia operativa de tu negocio.
           </p>
         </div>
 

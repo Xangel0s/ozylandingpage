@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { Server, TrendingUp, ShieldAlert, ArrowRight, ShieldCheck, HelpCircle, Activity, Bolt, BookOpen, Shield, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Soporte Técnico de Élite 24/7 | OzyBase",
+  title: "Soporte Técnico Profesional 24/7 | OzyBase",
   description: "Protegemos tu infraestructura crítica con ingenieros de Nivel 3. Garantizamos alta disponibilidad y resolución rápida de incidencias con SLAs dedicados.",
   alternates: {
     canonical: "https://ozybase.com/soporte",
@@ -28,7 +28,7 @@ export default function Soporte() {
                 SISTEMAS OPERATIVOS 24/7
               </div>
               <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight">
-                Soporte Técnico de <span className="text-success-neon">Élite</span>
+                Soporte Técnico <span className="text-success-neon">Profesional</span>
               </h1>
               <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans">
                 Infraestructura crítica protegida por ingenieros de Nivel 3. Garantizamos alta disponibilidad y resolución de incidencias en tiempos récord mediante protocolos de redundancia activa.
