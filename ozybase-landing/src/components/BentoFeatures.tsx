@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Headset, Cpu, Database, ArrowRight } from "lucide-react";
 
 export default function BentoFeatures() {
@@ -6,25 +7,22 @@ export default function BentoFeatures() {
       title: "Soporte Técnico Profesional",
       description: "Accede a soporte dedicado 24/7 con ingenieros especializados. Tiempos de respuesta mínimos y SLA garantizado.",
       icon: <Headset className="w-6 h-6 text-success-neon" />,
-      href: "#soporte",
+      href: "/soporte",
       cta: "Saber más",
-      accent: "from-success-neon/10 to-transparent",
     },
     {
       title: "Soluciones con Agentes IA",
       description: "Binarios autónomos autogestionados de baja latencia con memoria persistente para el monitoreo de infraestructura.",
       icon: <Cpu className="w-6 h-6 text-success-neon" />,
-      href: "#agentes",
+      href: "/agentes-ia",
       cta: "Explorar IA",
-      accent: "from-success-neon/10 to-transparent",
     },
     {
       title: "Digitalización de Procesos",
       description: "Migra tus flujos de trabajo en Excel manuales a plataformas web rápidas, seguras y de precisión matemática absoluta.",
       icon: <Database className="w-6 h-6 text-success-neon" />,
-      href: "#digitalizacion",
+      href: "/digitalizacion",
       cta: "Ver migración",
-      accent: "from-success-neon/10 to-transparent",
     },
   ];
 
@@ -61,13 +59,13 @@ export default function BentoFeatures() {
                 </p>
               </div>
 
-              <a
+              <Link
                 href={card.href}
                 className="inline-flex items-center gap-2 font-mono text-sm text-success-neon font-bold group-hover:text-white transition-colors"
               >
                 {card.cta}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </div>
           ))}
         </div>
