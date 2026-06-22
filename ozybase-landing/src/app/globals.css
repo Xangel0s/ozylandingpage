@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #e5e2e1;
+  --surface: #131313;
+  --surface-elevated: #141414;
+  --border-subtle: #27272A;
+  --success-neon: #D2F20B;
+  --terminal-gray: #A1A1AA;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border-subtle: var(--border-subtle);
+  --color-success-neon: var(--success-neon);
+  --color-terminal-gray: var(--terminal-gray);
+  
+  --font-sans: var(--font-inter);
+  --font-headline: var(--font-geist-sans);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--success-neon);
+}
+
+/* Custom Classes */
+.terminal-grid {
+  background-image: radial-gradient(#27272a 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.matrix-grid {
+  background-image: radial-gradient(circle, #27272A 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.grid-background {
+  background-size: 40px 40px;
+  background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.glass-card {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(210, 242, 11, 0.5);
+  box-shadow: 0 0 30px rgba(210, 242, 11, 0.05);
+}
+
+.glow-border:hover {
+  border-color: rgba(210, 242, 11, 0.5);
+  box-shadow: 0 0 20px rgba(210, 242, 11, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 15px rgba(210, 242, 11, 0.2);
+}
+
+/* Logo Carousel Animation */
+.logo-carousel-track {
+  display: flex;
+  width: calc(250px * 14);
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-250px * 7)); }
+}
+
+/* Scan Line Animation */
+.scan-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--success-neon), transparent);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+/* Rolling Digits Animation */
+.digit-container {
+  display: inline-flex;
+  height: 1.2em;
+  line-height: 1.2em;
+  overflow: hidden;
+  vertical-align: top;
+}
+.digit-reel {
+  display: flex;
+  flex-direction: column;
+}
+.digit-reel span {
+  display: block;
+  height: 1.2em;
+}
+
+/* Form transition support */
+.form-fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease-out;
+  pointer-events: none;
+}
