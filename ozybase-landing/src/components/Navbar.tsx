@@ -20,8 +20,9 @@ export default function Navbar() {
     <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border-subtle">
       <div className="flex justify-between items-center h-16 px-6 md:px-16 max-w-[1280px] mx-auto">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-headline text-2xl font-bold tracking-tighter text-white">
-          <span className="text-success-neon">OzyBase</span>
+        <Link href="/" className="flex items-center gap-3 font-headline text-2xl font-bold tracking-tighter text-white">
+          <img src="/ozybaselogo.png" alt="OzyBase Logo" className="h-8 w-8 rounded object-cover" />
+          <span>OzyBase</span>
         </Link>
 
         {/* Desktop Links */}

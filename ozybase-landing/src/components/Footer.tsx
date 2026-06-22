@@ -7,8 +7,9 @@ export default function Footer() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start mb-16">
           <div className="md:col-span-6 space-y-6">
-            <div className="font-headline text-2xl font-bold tracking-tighter text-white">
-              OzyBase
+            <div className="flex items-center gap-3 font-headline text-2xl font-bold tracking-tighter text-white">
+              <img src="/ozybaselogo.png" alt="OzyBase Logo" className="h-6 w-6 rounded object-cover grayscale opacity-50" />
+              <span>OzyBase</span>
             </div>
             <p className="text-terminal-gray text-base max-w-sm">
               Sistemas de alto rendimiento para el futuro de la infraestructura digital.
