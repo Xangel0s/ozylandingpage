@@ -163,50 +163,6 @@ export default function AgentesIa() {
           </div>
         </section>
 
-        {/* Technical Reliability Section */}
-        <section className="py-24 overflow-hidden bg-black border-t border-border-subtle">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-            <div className="relative order-2 md:order-1 flex justify-center reveal-left">
-              <div className="w-full max-w-sm aspect-square bg-[#141414] rounded-xl border border-border-subtle overflow-hidden flex items-center justify-center relative">
-                <div className="absolute inset-0 matrix-grid opacity-15"></div>
-                <div className="z-10 text-center p-8">
-                  <div className="text-[80px] font-extrabold text-success-neon opacity-10 leading-none mb-4 font-mono">99.99%</div>
-                  <h4 className="font-headline text-xl font-bold text-white mb-2">Confiabilidad Extrema</h4>
-                  <p className="text-terminal-gray text-sm font-sans">Nuestra infraestructura core es descentralizada. Si un agente cae, diez más se sincronizan para cubrir la brecha.</p>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-8 order-1 md:order-2 reveal-right">
-              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
-                Integridad Técnica por Diseño
-              </h2>
-              <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans">
-                No solo construimos software; creamos ecosistemas autónomos. Los agentes de OzyBase están desarrollados en binarios de bajo nivel para un rendimiento máximo.
-              </p>
-              <div className="space-y-6">
-                <div className="flex gap-4 items-start">
-                  <div className="mt-1 shrink-0 w-6 h-6 rounded-full border border-success-neon flex items-center justify-center">
-                    <Fingerprint className="w-3.5 h-3.5 text-success-neon" />
-                  </div>
-                  <div>
-                    <h5 className="font-headline text-base font-bold text-white mb-1">Persistencia de Estado Encriptada</h5>
-                    <p className="text-terminal-gray text-sm md:text-base">Toda la memoria de contexto se almacena en enclaves encriptados por hardware, asegurando velocidad y seguridad.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="mt-1 shrink-0 w-6 h-6 rounded-full border border-success-neon flex items-center justify-center">
-                    <FolderSync className="w-3.5 h-3.5 text-success-neon" />
-                  </div>
-                  <div>
-                    <h5 className="font-headline text-base font-bold text-white mb-1">Cadenas de Lógica Autónoma</h5>
-                    <p className="text-terminal-gray text-sm md:text-base">Lógica de auto-sanación que actualiza y parchea el core de monitoreo sin tiempos de inactividad.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Modelos de Implementación */}
         <section className="py-24 bg-[#0a0a0a] border-t border-border-subtle">
           <div className="max-w-[1280px] mx-auto px-6 md:px-16">
@@ -293,6 +249,50 @@ export default function AgentesIa() {
                 >
                   Contratar Soporte
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Technical Reliability Section */}
+        <section className="py-24 overflow-hidden bg-black border-t border-border-subtle">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+            <div className="relative order-2 md:order-1 flex justify-center reveal-left">
+              <div className="w-full max-w-sm aspect-square bg-[#141414] rounded-xl border border-border-subtle overflow-hidden flex items-center justify-center relative">
+                <div className="absolute inset-0 matrix-grid opacity-15"></div>
+                <div className="z-10 text-center p-8">
+                  <div className="text-[80px] font-extrabold text-success-neon opacity-10 leading-none mb-4 font-mono">99.99%</div>
+                  <h4 className="font-headline text-xl font-bold text-white mb-2">Confiabilidad Extrema</h4>
+                  <p className="text-terminal-gray text-sm font-sans">Nuestra infraestructura core es descentralizada. Si un agente cae, diez más se sincronizan para cubrir la brecha.</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-8 order-1 md:order-2 reveal-right">
+              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
+                Integridad Técnica por Diseño
+              </h2>
+              <p className="text-terminal-gray text-base md:text-lg leading-relaxed font-sans">
+                No solo construimos software; creamos ecosistemas autónomos. Los agentes de OzyBase están desarrollados en binarios de bajo nivel para un rendimiento máximo.
+              </p>
+              <div className="space-y-6">
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 shrink-0 w-6 h-6 rounded-full border border-success-neon flex items-center justify-center">
+                    <Fingerprint className="w-3.5 h-3.5 text-success-neon" />
+                  </div>
+                  <div>
+                    <h5 className="font-headline text-base font-bold text-white mb-1">Persistencia de Estado Encriptada</h5>
+                    <p className="text-terminal-gray text-sm md:text-base">Toda la memoria de contexto se almacena en enclaves encriptados por hardware, asegurando velocidad y seguridad.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 shrink-0 w-6 h-6 rounded-full border border-success-neon flex items-center justify-center">
+                    <FolderSync className="w-3.5 h-3.5 text-success-neon" />
+                  </div>
+                  <div>
+                    <h5 className="font-headline text-base font-bold text-white mb-1">Cadenas de Lógica Autónoma</h5>
+                    <p className="text-terminal-gray text-sm md:text-base">Lógica de auto-sanación que actualiza y parchea el core de monitoreo sin tiempos de inactividad.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

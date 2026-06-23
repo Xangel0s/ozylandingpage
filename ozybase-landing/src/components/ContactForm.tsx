@@ -221,6 +221,7 @@ export default function ContactForm() {
                       <option>Soporte Técnico</option>
                       <option>Agentes IA</option>
                       <option>Digitalización de Procesos</option>
+                      <option>Plataforma de Diagnósticos</option>
                     </select>
                   </div>
 
