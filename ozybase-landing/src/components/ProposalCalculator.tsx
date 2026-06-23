@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Calculator, FileText, CheckCircle2, ShieldCheck, Mail, Phone, Building } from "lucide-react";
+import { Calculator, FileText, CheckCircle2, Server } from "lucide-react";
 
 export default function ProposalCalculator() {
   const [supportType, setSupportType] = useState<"fisico" | "sistemas" | "hibrido">("sistemas");
   const [infraSize, setInfraSize] = useState<number>(5); // number of PCs/servers
+  const [numSedes, setNumSedes] = useState<number>(1); // number of physical office locations
   const [sla, setSla] = useState<"estandar" | "avanzado" | "critico">("avanzado");
+  const [includeBackup, setIncludeBackup] = useState<boolean>(false);
+  const [backupTBs, setBackupTBs] = useState<number>(1);
 
   // Calculate pricing in Peruvian Soles (S/.)
   const calculatePrice = () => {
@@ -24,13 +27,30 @@ export default function ProposalCalculator() {
     if (sla === "avanzado") slaMultiplier = 1.4;
     if (sla === "critico") slaMultiplier = 2.2;
 
-    return Math.round(basePrice * sizeMultiplier * slaMultiplier);
+    let total = basePrice * sizeMultiplier * slaMultiplier;
+
+    // Internal travel cost (not displayed directly to keep panel clean)
+    // Travel ticket base = S/. 1.5, 4 visits per month, 2-way travel per visit.
+    if (supportType === "fisico" || supportType === "hibrido") {
+      const travelBaseTicket = 1.5;
+      const visitsPerSede = 4;
+      const travelsPerVisit = 2;
+      const internalTravelCost = numSedes * visitsPerSede * travelsPerVisit * travelBaseTicket; // numSedes * 12 Soles
+      total += internalTravelCost;
+    }
+
+    // Backup cost
+    if (includeBackup) {
+      const costPerTB = 120; // S/. 120 per TB
+      total += backupTBs * costPerTB;
+    }
+
+    return Math.round(total);
   };
 
   const currentPrice = calculatePrice();
 
   const handlePrint = () => {
-    // Generate a beautiful print view
     const printWindow = window.open("", "_blank");
     if (!printWindow) return;
 
@@ -94,20 +114,36 @@ export default function ProposalCalculator() {
                       : "Soporte Híbrido Completo (Sedes y Nube)"
                   }</td>
                 </tr>
+                ${
+                  supportType !== "sistemas"
+                    ? `<tr>
+                        <td>Sedes / Oficinas Físicas</td>
+                        <td>${numSedes} Sedes</td>
+                      </tr>`
+                    : ""
+                }
                 <tr>
                   <td>Tamaño de Infraestructura</td>
                   <td>${infraSize} Dispositivos / Servidores</td>
                 </tr>
                 <tr>
                   <td>Acuerdo de Nivel de Servicio (SLA)</td>
-                  <td>${
+                  <td>Garantía de respuesta &lt; 15 minutos (${
                     sla === "estandar"
-                      ? "Estándar (Siguiente día hábil)"
+                      ? "Cobertura Horario Laboral"
                       : sla === "avanzado"
-                      ? "Avanzado (Respuesta < 2 horas)"
-                      : "Crítico Enterprise (Respuesta < 15 minutos, 24/7)"
-                  }</td>
+                      ? "Cobertura Canal Slack Dedicado"
+                      : "Soporte Crítico 24/7/365 Multi-canal"
+                  })</td>
                 </tr>
+                ${
+                  includeBackup
+                    ? `<tr>
+                        <td>Servicio de Backup Adicional</td>
+                        <td>Incluido - Capacidad de ${backupTBs} TB</td>
+                      </tr>`
+                    : ""
+                }
               </tbody>
             </table>
           </div>
@@ -116,7 +152,7 @@ export default function ProposalCalculator() {
             <div class="section-title">Servicios Generales Incluidos</div>
             <ul>
               <li>Mantenimiento proactivo de hardware y software según tipo de soporte.</li>
-              <li>Monitoreo y respuesta de incidentes con escala inmediata a ingenieros Nivel 3.</li>
+              <li>Monitoreo y respuesta de incidentes &lt; 15 min con escala inmediata a ingenieros Nivel 3.</li>
               <li>Gestión y asesoramiento en seguridad de red y backups automatizados.</li>
             </ul>
           </div>
@@ -204,6 +240,32 @@ export default function ProposalCalculator() {
               </div>
             </div>
 
+            {/* Conditionally Render: Number of physical headquarters */}
+            {(supportType === "fisico" || supportType === "hibrido") && (
+              <div className="space-y-4 animate-[fadeIn_0.3s_ease-out]">
+                <div className="flex justify-between items-center">
+                  <label className="font-mono text-xs text-terminal-gray uppercase">
+                    Sedes u Oficinas Físicas a Atender
+                  </label>
+                  <span className="font-mono text-xs text-success-neon font-bold">
+                    {numSedes} {numSedes === 1 ? "Sede" : "Sedes"}
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={5}
+                  value={numSedes}
+                  onChange={(e) => setNumSedes(Number(e.target.value))}
+                  className="w-full h-1 bg-black rounded-lg appearance-none cursor-pointer accent-success-neon"
+                />
+                <div className="flex justify-between font-mono text-[9px] text-terminal-gray/60">
+                  <span>1 SEDE</span>
+                  <span>5 SEDES</span>
+                </div>
+              </div>
+            )}
+
             {/* Step 2: Infrastructure Size */}
             <div className="space-y-4">
               <div className="flex justify-between items-center">
@@ -226,7 +288,7 @@ export default function ProposalCalculator() {
               </div>
             </div>
 
-            {/* Step 3: SLA Accord */}
+            {/* Step 3: SLA Accord (All guaranteeing <15 min response time) */}
             <div className="space-y-4">
               <label className="font-mono text-xs text-terminal-gray uppercase block">
                 3. Acuerdo de Nivel de Servicio (SLA)
@@ -240,8 +302,8 @@ export default function ProposalCalculator() {
                       : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
                   }`}
                 >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Estándar</span>
-                  Siguiente día hábil. Email & Panel de Soporte.
+                  <span className="font-headline font-bold block text-sm text-white mb-1">Estándar &lt;15m</span>
+                  Respuesta en menos de 15 minutos en horario laboral.
                 </button>
                 <button
                   onClick={() => setSla("avanzado")}
@@ -251,8 +313,8 @@ export default function ProposalCalculator() {
                       : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
                   }`}
                 >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Avanzado</span>
-                  Respuesta menor a 2 horas. Slack canal dedicado.
+                  <span className="font-headline font-bold block text-sm text-white mb-1">Avanzado &lt;15m</span>
+                  Respuesta en menos de 15 minutos vía Slack Dedicado.
                 </button>
                 <button
                   onClick={() => setSla("critico")}
@@ -262,10 +324,49 @@ export default function ProposalCalculator() {
                       : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
                   }`}
                 >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Crítico L3</span>
-                  Respuesta menor a 15 min. 24/7/365 multi-canal.
+                  <span className="font-headline font-bold block text-sm text-white mb-1">Crítico L3 &lt;15m</span>
+                  Respuesta en menos de 15 minutos. 24/7/365 multi-canal.
                 </button>
               </div>
+            </div>
+
+            {/* Optional Backup Service checkbox by TB */}
+            <div className="space-y-4 border-t border-border-subtle/30 pt-6">
+              <div className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="backup"
+                  checked={includeBackup}
+                  onChange={(e) => setIncludeBackup(e.target.checked)}
+                  className="w-4 h-4 rounded border-border-subtle bg-black text-success-neon focus:ring-0 cursor-pointer accent-success-neon"
+                />
+                <label htmlFor="backup" className="font-mono text-xs text-white uppercase cursor-pointer select-none">
+                  Incluir Copias de Seguridad (Backup Automatizado)
+                </label>
+              </div>
+
+              {includeBackup && (
+                <div className="space-y-4 pl-7 animate-[fadeIn_0.3s_ease-out]">
+                  <div className="flex justify-between items-center">
+                    <label className="font-mono text-xs text-terminal-gray uppercase">
+                      Espacio Requerido de Almacenamiento
+                    </label>
+                    <span className="font-mono text-xs text-success-neon font-bold">{backupTBs} TB</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1}
+                    max={10}
+                    value={backupTBs}
+                    onChange={(e) => setBackupTBs(Number(e.target.value))}
+                    className="w-full h-1 bg-black rounded-lg appearance-none cursor-pointer accent-success-neon"
+                  />
+                  <div className="flex justify-between font-mono text-[9px] text-terminal-gray/60">
+                    <span>1 TB</span>
+                    <span>10 TB</span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -299,7 +400,7 @@ export default function ProposalCalculator() {
               <div className="border-t border-border-subtle/50 pt-6 space-y-4 font-mono text-xs text-white">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-4 h-4 text-success-neon shrink-0" />
-                  <span>SLA garantizado de {sla === "estandar" ? "24h" : sla === "avanzado" ? "2h" : "15m"}</span>
+                  <span>SLA garantizado de Respuesta &lt; 15m</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-4 h-4 text-success-neon shrink-0" />
@@ -311,6 +412,12 @@ export default function ProposalCalculator() {
                     Cobertura {supportType === "fisico" ? "Sede Física" : supportType === "sistemas" ? "Servidores" : "Híbrida"}
                   </span>
                 </div>
+                {includeBackup && (
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-4 h-4 text-success-neon shrink-0" />
+                    <span>Backup Automatizado Activo ({backupTBs} TB)</span>
+                  </div>
+                )}
               </div>
             </div>
 
