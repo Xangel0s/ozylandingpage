@@ -183,258 +183,178 @@ export default function ProposalCalculator() {
   return (
     <section className="py-24 bg-black border-t border-border-subtle" id="cotizador">
       <div className="max-w-[1280px] mx-auto px-6 md:px-16">
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-left mb-16 space-y-4 max-w-4xl">
           <span className="font-mono text-xs text-success-neon uppercase tracking-widest block">
-            Planificador e Inversión
+            Planificador de Soporte Técnico
           </span>
-          <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
-            Soporte Técnico para tu Sede o Sistemas
+          <h2 className="font-headline text-3xl md:text-5xl font-bold text-white tracking-tight">
+            Obtenga una propuesta técnica al instante o agende una demostración
           </h2>
-          <p className="text-terminal-gray text-base md:text-lg max-w-2xl mx-auto">
-            Configura y calcula en tiempo real una estimación económica formalizada en Soles para tus sedes físicas o nubes de servidores.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-6xl mx-auto">
-          {/* Configurator Form */}
-          <div className="lg:col-span-7 bg-[#141414] border border-border-subtle p-8 rounded-xl space-y-8">
-            {/* Step 1: Support Type */}
-            <div className="space-y-4">
-              <label className="font-mono text-xs text-terminal-gray uppercase block">
-                1. Tipo de Soporte Técnico
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <button
-                  onClick={() => setSupportType("fisico")}
-                  className={`p-4 border rounded-lg text-left font-sans text-xs transition-all ${
-                    supportType === "fisico"
-                      ? "border-success-neon bg-success-neon/5 text-white"
-                      : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
-                  }`}
-                >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Sede Física</span>
-                  Infraestructura local, routers, PCs y cableado en oficinas.
-                </button>
-                <button
-                  onClick={() => setSupportType("sistemas")}
-                  className={`p-4 border rounded-lg text-left font-sans text-xs transition-all ${
-                    supportType === "sistemas"
-                      ? "border-success-neon bg-success-neon/5 text-white"
-                      : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
-                  }`}
-                >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Sistemas & Nube</span>
-                  Servidores virtuales, base de datos y nubes (AWS/GCP).
-                </button>
-                <button
-                  onClick={() => setSupportType("hibrido")}
-                  className={`p-4 border rounded-lg text-left font-sans text-xs transition-all ${
-                    supportType === "hibrido"
-                      ? "border-success-neon bg-success-neon/5 text-white"
-                      : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
-                  }`}
-                >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Híbrido</span>
-                  Ambas coberturas de manera integral en tu organización.
-                </button>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch max-w-[1200px] mx-auto">
+          {/* Left Column: Form Panel */}
+          <div className="lg:col-span-7 bg-[#141414] border border-border-subtle p-8 rounded-2xl flex flex-col justify-between space-y-8 relative">
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-[#D2F20B] rounded-t-2xl"></div>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-headline text-xl font-bold text-white">Detalles de Infraestructura</h3>
+                <p className="text-xs text-terminal-gray mt-1">Proporcione detalles de red y sistemas de su empresa.</p>
               </div>
-            </div>
 
-            {/* Conditionally Render: Number of physical headquarters */}
-            {(supportType === "fisico" || supportType === "hibrido") && (
-              <div className="space-y-4 animate-[fadeIn_0.3s_ease-out]">
-                <div className="flex justify-between items-center">
-                  <label className="font-mono text-xs text-terminal-gray uppercase">
-                    Sedes u Oficinas Físicas a Atender
+              {/* Grid Inputs */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="font-mono text-[10px] text-terminal-gray uppercase tracking-wider block">
+                    Tipo de Soporte
                   </label>
-                  <span className="font-mono text-xs text-success-neon font-bold">
-                    {numSedes} {numSedes === 1 ? "Sede" : "Sedes"}
-                  </span>
+                  <select
+                    value={supportType}
+                    onChange={(e) => setSupportType(e.target.value as any)}
+                    className="w-full bg-black border border-border-subtle rounded-lg px-4 py-3 text-xs text-white focus:border-success-neon focus:outline-none"
+                  >
+                    <option value="sistemas">Sistemas & Nube</option>
+                    <option value="fisico">Sede Física</option>
+                    <option value="hibrido">Híbrido Completo</option>
+                  </select>
                 </div>
-                <input
-                  type="range"
-                  min={1}
-                  max={5}
-                  value={numSedes}
-                  onChange={(e) => setNumSedes(Number(e.target.value))}
-                  className="w-full h-1 bg-black rounded-lg appearance-none cursor-pointer accent-success-neon"
-                />
-                <div className="flex justify-between font-mono text-[9px] text-terminal-gray/60">
-                  <span>1 SEDE</span>
-                  <span>5 SEDES</span>
-                </div>
-              </div>
-            )}
 
-            {/* Step 2: Infrastructure Size */}
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <label className="font-mono text-xs text-terminal-gray uppercase">
-                  2. Dispositivos o Servidores a Monitorear
-                </label>
-                <span className="font-mono text-xs text-success-neon font-bold">{infraSize} Equipos</span>
-              </div>
-              <input
-                type="range"
-                min={2}
-                max={50}
-                value={infraSize}
-                onChange={(e) => setInfraSize(Number(e.target.value))}
-                className="w-full h-1 bg-black rounded-lg appearance-none cursor-pointer accent-success-neon"
-              />
-              <div className="flex justify-between font-mono text-[9px] text-terminal-gray/60">
-                <span>MÍN: 2 EQUIPOS</span>
-                <span>MÁX: 50 EQUIPOS</span>
-              </div>
-            </div>
-
-            {/* Step 3: SLA Accord (All guaranteeing <15 min response time) */}
-            <div className="space-y-4">
-              <label className="font-mono text-xs text-terminal-gray uppercase block">
-                3. Acuerdo de Nivel de Servicio (SLA)
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <button
-                  onClick={() => setSla("estandar")}
-                  className={`p-4 border rounded-lg text-left font-sans text-xs transition-all ${
-                    sla === "estandar"
-                      ? "border-success-neon bg-success-neon/5 text-white"
-                      : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
-                  }`}
-                >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Estándar &lt;15m</span>
-                  Respuesta en menos de 15 minutos en horario laboral.
-                </button>
-                <button
-                  onClick={() => setSla("avanzado")}
-                  className={`p-4 border rounded-lg text-left font-sans text-xs transition-all ${
-                    sla === "avanzado"
-                      ? "border-success-neon bg-success-neon/5 text-white"
-                      : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
-                  }`}
-                >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Avanzado &lt;15m</span>
-                  Respuesta en menos de 15 minutos vía Slack Dedicado.
-                </button>
-                <button
-                  onClick={() => setSla("critico")}
-                  className={`p-4 border rounded-lg text-left font-sans text-xs transition-all ${
-                    sla === "critico"
-                      ? "border-success-neon bg-success-neon/5 text-white"
-                      : "border-border-subtle bg-black text-terminal-gray hover:border-white/20"
-                  }`}
-                >
-                  <span className="font-headline font-bold block text-sm text-white mb-1">Crítico L3 &lt;15m</span>
-                  Respuesta en menos de 15 minutos. 24/7/365 multi-canal.
-                </button>
-              </div>
-            </div>
-
-            {/* Optional Backup Service checkbox by TB */}
-            <div className="space-y-4 border-t border-border-subtle/30 pt-6">
-              <div className="flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  id="backup"
-                  checked={includeBackup}
-                  onChange={(e) => setIncludeBackup(e.target.checked)}
-                  className="w-4 h-4 rounded border-border-subtle bg-black text-success-neon focus:ring-0 cursor-pointer accent-success-neon"
-                />
-                <label htmlFor="backup" className="font-mono text-xs text-white uppercase cursor-pointer select-none">
-                  Incluir Copias de Seguridad (Backup Automatizado)
-                </label>
-              </div>
-
-              {includeBackup && (
-                <div className="space-y-4 pl-7 animate-[fadeIn_0.3s_ease-out]">
-                  <div className="flex justify-between items-center">
-                    <label className="font-mono text-xs text-terminal-gray uppercase">
-                      Espacio Requerido de Almacenamiento
-                    </label>
-                    <span className="font-mono text-xs text-success-neon font-bold">{backupTBs} TB</span>
-                  </div>
+                <div className="space-y-2">
+                  <label className="font-mono text-[10px] text-terminal-gray uppercase tracking-wider block">
+                    Equipos / Servidores
+                  </label>
                   <input
-                    type="range"
+                    type="number"
+                    min={2}
+                    max={100}
+                    value={infraSize}
+                    onChange={(e) => setInfraSize(Number(e.target.value))}
+                    className="w-full bg-black border border-border-subtle rounded-lg px-4 py-3 text-xs text-white focus:border-success-neon focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              {/* Sedes / Oficinas (Condicional) */}
+              {(supportType === "fisico" || supportType === "hibrido") && (
+                <div className="space-y-2 animate-[fadeIn_0.3s_ease-out]">
+                  <label className="font-mono text-[10px] text-terminal-gray uppercase tracking-wider block">
+                    Número de sedes u oficinas físicas
+                  </label>
+                  <input
+                    type="number"
                     min={1}
                     max={10}
-                    value={backupTBs}
-                    onChange={(e) => setBackupTBs(Number(e.target.value))}
-                    className="w-full h-1 bg-black rounded-lg appearance-none cursor-pointer accent-success-neon"
+                    value={numSedes}
+                    onChange={(e) => setNumSedes(Number(e.target.value))}
+                    className="w-full bg-black border border-border-subtle rounded-lg px-4 py-3 text-xs text-white focus:border-success-neon focus:outline-none"
                   />
-                  <div className="flex justify-between font-mono text-[9px] text-terminal-gray/60">
-                    <span>1 TB</span>
-                    <span>10 TB</span>
-                  </div>
                 </div>
               )}
-            </div>
-          </div>
 
-          {/* Proposal Summary Card */}
-          <div className="lg:col-span-5 bg-[#141414] border border-border-subtle rounded-xl overflow-hidden shadow-2xl flex flex-col justify-between h-full">
-            {/* Card Top */}
-            <div className="p-8 border-b border-border-subtle bg-black/40">
-              <div className="font-headline text-lg font-bold text-white mb-1 flex items-center gap-2">
-                <Calculator className="w-5 h-5 text-success-neon" />
-                Resumen de Cotización
-              </div>
-              <p className="text-terminal-gray font-mono text-[10px] uppercase">
-                Ozybase Infrastructure Services
-              </p>
-            </div>
-
-            {/* Card Content */}
-            <div className="p-8 space-y-6 grow">
-              <div className="space-y-4">
-                <div className="flex justify-between items-baseline font-mono text-xs">
-                  <span className="text-terminal-gray">INVERSIÓN MENSUAL:</span>
-                  <span className="text-white font-bold text-lg">
-                    S/. {currentPrice.toLocaleString("es-PE")}
-                  </span>
-                </div>
-                <div className="text-[10px] font-mono text-success-neon/60 italic text-right">
-                  * Cotizado en Soles (Aprox. + IGV)
-                </div>
+              {/* SLA */}
+              <div className="space-y-2">
+                <label className="font-mono text-[10px] text-terminal-gray uppercase tracking-wider block">
+                  Nivel de Servicio (SLA)
+                </label>
+                <select
+                  value={sla}
+                  onChange={(e) => setSla(e.target.value as any)}
+                  className="w-full bg-black border border-border-subtle rounded-lg px-4 py-3 text-xs text-white focus:border-success-neon focus:outline-none"
+                >
+                  <option value="estandar">Estándar (&lt; 15 min - Horario Laboral)</option>
+                  <option value="avanzado">Avanzado (&lt; 15 min - Slack Dedicado)</option>
+                  <option value="critico">Crítico L3 (&lt; 15 min - Soporte 24/7/365)</option>
+                </select>
               </div>
 
-              <div className="border-t border-border-subtle/50 pt-6 space-y-4 font-mono text-xs text-white">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-success-neon shrink-0" />
-                  <span>SLA garantizado de Respuesta &lt; 15m</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-success-neon shrink-0" />
-                  <span>Resolución directa por ingenieros L3</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-success-neon shrink-0" />
-                  <span>
-                    Cobertura {supportType === "fisico" ? "Sede Física" : supportType === "sistemas" ? "Servidores" : "Híbrida"}
-                  </span>
+              {/* Backup */}
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="backup"
+                    checked={includeBackup}
+                    onChange={(e) => setIncludeBackup(e.target.checked)}
+                    className="w-4 h-4 rounded border-border-subtle bg-black text-success-neon focus:ring-0 cursor-pointer accent-success-neon"
+                  />
+                  <label htmlFor="backup" className="font-mono text-[11px] text-white uppercase cursor-pointer select-none">
+                    Incluir almacenamiento de respaldos (Backup)
+                  </label>
                 </div>
                 {includeBackup && (
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-success-neon shrink-0" />
-                    <span>Backup Automatizado Activo ({backupTBs} TB)</span>
+                  <div className="flex items-center gap-3 pl-6 animate-[fadeIn_0.3s_ease-out]">
+                    <span className="font-mono text-xs text-terminal-gray">Capacidad:</span>
+                    <input
+                      type="number"
+                      min={1}
+                      max={50}
+                      value={backupTBs}
+                      onChange={(e) => setBackupTBs(Number(e.target.value))}
+                      className="w-20 bg-black border border-border-subtle rounded px-2 py-1 text-xs text-white text-center focus:border-success-neon focus:outline-none"
+                    />
+                    <span className="font-mono text-xs text-success-neon">TB(s)</span>
                   </div>
                 )}
               </div>
+
+              {/* File Upload Area (matches screenshot) */}
+              <div className="space-y-2 border-t border-border-subtle/30 pt-6">
+                <label className="font-mono text-[10px] text-terminal-gray uppercase tracking-wider block">
+                  Cargue el inventario de equipos o plano de red si está disponible
+                </label>
+                <div className="border border-dashed border-border-subtle bg-black/30 rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#D2F20B]/30 transition-colors">
+                  <svg className="w-8 h-8 text-terminal-gray/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                  </svg>
+                  <span className="text-xs text-white font-medium">Arrastre los archivos aquí</span>
+                  <span className="text-[10px] text-terminal-gray/60 mt-1">Máximo 3 archivos, hasta 50 MB cada uno</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Description & Action */}
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-6 lg:pl-6">
+            <div className="space-y-4">
+              <h3 className="font-headline text-2xl font-bold text-white leading-snug">
+                Autoservicio: Obtenga una propuesta de soporte en minutos.
+              </h3>
+              <p className="text-sm text-terminal-gray leading-relaxed">
+                Complete las especificaciones técnicas en el panel de la izquierda, verifique el presupuesto mensual y descargue la propuesta comercial formalizada con el logotipo de OzyBase de manera inmediata.
+              </p>
             </div>
 
-            {/* Card Action */}
-            <div className="p-8 border-t border-border-subtle bg-black/40 space-y-4">
+            <div className="space-y-2 border-y border-border-subtle/40 py-6">
+              <span className="font-mono text-[10px] text-success-neon uppercase tracking-wider block">
+                Estimación de Inversión Mensual
+              </span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-3xl font-extrabold text-white">S/. {currentPrice.toLocaleString("es-PE")}</span>
+                <span className="text-xs text-terminal-gray">+ IGV / mes</span>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <span className="text-xs font-semibold text-white block">Ideal para:</span>
+              <p className="text-xs text-terminal-gray leading-relaxed">
+                Directores de TI, administradores de sistemas y gerentes de operaciones que buscan automatizar y asegurar el soporte de sus oficinas y nubes sin demoras de contratación ni llamadas innecesarias.
+              </p>
+            </div>
+
+            <div className="space-y-4 pt-4">
               <button
                 onClick={handlePrint}
-                className="w-full py-4 bg-success-neon text-black hover:bg-transparent hover:text-success-neon border border-success-neon font-mono text-xs font-bold rounded uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
+                className="w-full py-4 bg-[#D2F20B] hover:bg-[#c0de0a] text-black font-mono text-xs font-bold rounded-lg uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
               >
                 <FileText className="w-4 h-4" />
                 Descargar Propuesta PDF
               </button>
               <a
                 href={`/contacto?servicio=Soporte+Técnico&monto=S/.+${currentPrice}&tipo=${supportType}`}
-                className="block text-center w-full py-4 border border-border-subtle text-white hover:border-success-neon hover:text-success-neon font-mono text-xs font-bold rounded uppercase transition-all"
+                className="block text-center w-full py-4 border border-border-subtle text-white hover:border-[#D2F20B] hover:text-[#D2F20B] font-mono text-xs font-bold rounded-lg uppercase transition-all"
               >
-                Solicitar Viabilidad
+                Agendar Demostración con Especialista
               </a>
             </div>
           </div>
