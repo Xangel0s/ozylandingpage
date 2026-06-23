@@ -10,6 +10,51 @@ export default function ProposalCalculator() {
   const [sla, setSla] = useState<"estandar" | "avanzado" | "critico">("avanzado");
   const [includeBackup, setIncludeBackup] = useState<boolean>(false);
   const [backupTBs, setBackupTBs] = useState<number>(1);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
+  const [deviceDetectedCount, setDeviceDetectedCount] = useState<number | null>(null);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadError(null);
+    setUploadedFileName(file.name);
+    setDeviceDetectedCount(null);
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const text = event.target?.result as string;
+        let count = 0;
+
+        if (file.name.endsWith(".json")) {
+          const parsed = JSON.parse(text);
+          count = Array.isArray(parsed) ? parsed.length : Object.keys(parsed).length;
+        } else if (file.name.endsWith(".csv")) {
+          const lines = text.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+          if (lines.length > 0) {
+            // Check if there is a header by verifying it's not a single data row
+            count = lines.length > 1 ? lines.length - 1 : lines.length;
+          }
+        } else {
+          throw new Error("Formato no soportado. Suba un archivo .csv o .json");
+        }
+
+        if (count > 0) {
+          const clamped = Math.max(2, Math.min(100, count));
+          setInfraSize(clamped);
+          setDeviceDetectedCount(count);
+        } else {
+          throw new Error("No se detectaron dispositivos en el archivo.");
+        }
+      } catch (err: any) {
+        setUploadError(err.message || "Error al procesar el archivo.");
+        setUploadedFileName(null);
+      }
+    };
+    reader.readAsText(file);
+  };
 
   // Calculate pricing in Peruvian Soles (S/.)
   const calculatePrice = () => {
@@ -160,7 +205,7 @@ export default function ProposalCalculator() {
           <div class="price-box">
             <div>Monto Mensual Estimado:</div>
             <div class="val">S/. ${currentPrice.toLocaleString("es-PE")} + IGV</div>
-            <div style="font-size: 11px; color: #555; margin-top: 5px;">Sujeto a facturación periódica mensual y firma de contrato.</div>
+            <div style="font-size: 11px; color: #555; margin-top: 5px;">* Estimación basada en facturación mensual con compromiso anual. Sujeto a variaciones por ubicación geográfica (ej. tiendas físicas retail) o si se coordina un esquema de visitas técnicas puntuales.</div>
           </div>
 
           <div class="footer">
@@ -301,15 +346,37 @@ export default function ProposalCalculator() {
               {/* File Upload Area (matches screenshot) */}
               <div className="space-y-2 border-t border-border-subtle/30 pt-6">
                 <label className="font-mono text-[10px] text-terminal-gray uppercase tracking-wider block">
-                  Cargue el inventario de equipos o plano de red si está disponible
+                  Cargue el inventario de equipos o plano de red si está disponible (.csv o .json)
                 </label>
-                <div className="border border-dashed border-border-subtle bg-black/30 rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#D2F20B]/30 transition-colors">
+                <label className="border border-dashed border-border-subtle bg-black/30 rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#D2F20B]/30 transition-colors block">
+                  <input
+                    type="file"
+                    accept=".csv,.json"
+                    onChange={handleFileUpload}
+                    className="hidden"
+                  />
                   <svg className="w-8 h-8 text-terminal-gray/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                   </svg>
-                  <span className="text-xs text-white font-medium">Arrastre los archivos aquí</span>
-                  <span className="text-[10px] text-terminal-gray/60 mt-1">Máximo 3 archivos, hasta 50 MB cada uno</span>
-                </div>
+                  {uploadedFileName ? (
+                    <div className="space-y-1">
+                      <span className="text-xs text-success-neon font-bold block">Archivo cargado: {uploadedFileName}</span>
+                      <span className="text-[10px] text-terminal-gray block">
+                        ¡Detectados {deviceDetectedCount} equipos! (Ajustado en el planificador)
+                      </span>
+                    </div>
+                  ) : uploadError ? (
+                    <div className="space-y-1">
+                      <span className="text-xs text-red-500 font-bold block">Error: {uploadError}</span>
+                      <span className="text-[10px] text-terminal-gray/60 block">Haga clic aquí para intentar de nuevo</span>
+                    </div>
+                  ) : (
+                    <>
+                      <span className="text-xs text-white font-medium">Haga clic para seleccionar su archivo</span>
+                      <span className="text-[10px] text-terminal-gray/60 mt-1">Soporta formato .csv o .json (inventario de equipos)</span>
+                    </>
+                  )}
+                </label>
               </div>
             </div>
           </div>
@@ -333,6 +400,9 @@ export default function ProposalCalculator() {
                 <span className="text-3xl font-extrabold text-white">S/. {currentPrice.toLocaleString("es-PE")}</span>
                 <span className="text-xs text-terminal-gray">+ IGV / mes</span>
               </div>
+              <p className="text-[10px] text-terminal-gray/80 leading-relaxed mt-3">
+                * Nota: Esta cotización estimada está calculada para un plan mensual con facturación anual corporativa. Las tarifas finales pueden variar por lugar de ubicación geográfica (ej. si es tienda física retail con viáticos adicionales) o si prefiere un esquema basado en visitas técnicas coordinadas.
+              </p>
             </div>
 
             <div className="space-y-2">
