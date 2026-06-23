@@ -1,13 +1,14 @@
-import { Database, Cloud, Terminal, Code, Rocket, Cpu } from "lucide-react";
+import { Database } from "lucide-react";
 
 export default function TrustedBy() {
   const logos = [
-    { name: "DataSys", icon: <Database className="w-5 h-5 text-success-neon" /> },
-    { name: "CloudOps", icon: <Cloud className="w-5 h-5 text-success-neon" /> },
-    { name: "TermiCorp", icon: <Terminal className="w-5 h-5 text-success-neon" /> },
-    { name: "DevStream", icon: <Code className="w-5 h-5 text-success-neon" /> },
-    { name: "AeroScale", icon: <Rocket className="w-5 h-5 text-success-neon" /> },
-    { name: "CoreNet", icon: <Cpu className="w-5 h-5 text-success-neon" /> },
+    { name: "Edvio", src: "/Logos/Edvio.png" },
+    { name: "Lima Green", src: "/Logos/Lima green.png" },
+    { name: "Elifyr", src: "/Logos/elifyr.png" },
+    { name: "La Casa de la Construcción", src: "/Logos/lacasadelaconstruccion.png" },
+    { name: "Edvio", src: "/Logos/Edvio.png" },
+    { name: "Lima Green", src: "/Logos/Lima green.png" },
+    { name: "Elifyr", src: "/Logos/elifyr.png" },
   ];
 
   return (
@@ -23,24 +24,26 @@ export default function TrustedBy() {
           {logos.map((logo, idx) => (
             <div
               key={`logo-1-${idx}`}
-              className="flex items-center justify-center w-[250px] opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 gap-2"
+              className="flex items-center justify-center w-[250px] opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
             >
-              {logo.icon}
-              <span className="font-headline font-bold text-white text-lg tracking-tight">
-                {logo.name}
-              </span>
+              <img
+                src={logo.src}
+                alt={logo.name}
+                className="h-10 max-w-[200px] object-contain"
+              />
             </div>
           ))}
           {/* Second duplicate set for infinite loop */}
           {logos.map((logo, idx) => (
             <div
               key={`logo-2-${idx}`}
-              className="flex items-center justify-center w-[250px] opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 gap-2"
+              className="flex items-center justify-center w-[250px] opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
             >
-              {logo.icon}
-              <span className="font-headline font-bold text-white text-lg tracking-tight">
-                {logo.name}
-              </span>
+              <img
+                src={logo.src}
+                alt={logo.name}
+                className="h-10 max-w-[200px] object-contain"
+              />
             </div>
           ))}
         </div>
