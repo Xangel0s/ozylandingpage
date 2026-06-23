@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, Server, Cpu, Layers, Activity, X, Database } from "lucide-react";
+import { Server, Cpu, Layers, Activity, X, Database, LucideIcon } from "lucide-react";
 
 interface ServiceOption {
   name: string;
   message: string;
-  icon: any;
+  icon: LucideIcon;
   description?: string;
 }
 

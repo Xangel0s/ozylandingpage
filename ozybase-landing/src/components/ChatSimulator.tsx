@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Sparkles, User, Server } from "lucide-react";
+import { Sparkles, User, Server, LucideIcon } from "lucide-react";
 
 interface StepMessage {
   id: number;
   sender: "client" | "ai" | "engineer" | "system";
   senderName: string;
-  avatarIcon: any;
+  avatarIcon: LucideIcon;
   avatarBg: string;
   timeLabel: string;
   bubbleBg: string;
@@ -15,7 +15,7 @@ interface StepMessage {
   hasProgress?: boolean;
   progressText?: string;
   statusCard?: {
-    icon: any;
+    icon: LucideIcon;
     title: string;
     subtitle: string;
     success: boolean;
@@ -111,7 +111,7 @@ export default function ChatSimulator() {
   return (
     <div className="w-full flex flex-col justify-end space-y-6 min-h-[420px] max-h-[480px] relative px-2">
       {/* Top opacity gradient mask to blend with the background */}
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 right-0 h-16 bg-linear-to-b from-black to-transparent pointer-events-none z-20"></div>
 
       <div className="space-y-6 flex flex-col justify-end overflow-hidden pb-4">
         {visibleMessages.map((msg) => {
