@@ -44,7 +44,7 @@ export default function WhatsAppFloating() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-sans">
+    <div className="fixed bottom-10 right-10 z-50 font-sans">
       {/* Services Menu Popup */}
       <div
         className={`absolute bottom-16 right-0 w-72 bg-[#141414]/95 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-2xl space-y-3 relative z-50 transition-all duration-300 origin-bottom-right ${
@@ -88,10 +88,8 @@ export default function WhatsAppFloating() {
       {/* Main WhatsApp Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] hover:scale-105 active:scale-95 transition-all relative group z-50"
+        className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] border border-black/40 hover:scale-105 active:scale-95 transition-all relative group z-50"
       >
-        <span className="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-25 group-hover:opacity-0 transition-opacity"></span>
-        
         {/* Custom SVG WhatsApp Logo for high-fidelity look */}
         <svg
           viewBox="0 0 24 24"
