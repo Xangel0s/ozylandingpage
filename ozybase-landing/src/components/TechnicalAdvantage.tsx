@@ -145,7 +145,7 @@ export default function TechnicalAdvantage() {
           </div>
           <Link
             href="/digitalizacion"
-            className="bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-opacity-95 transition-all flex items-center gap-2 whitespace-nowrap self-stretch md:self-auto justify-center"
+            className="border border-success-neon bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-transparent hover:text-success-neon transition-all flex items-center gap-2 whitespace-nowrap self-stretch md:self-auto justify-center"
           >
             <span>Saber Más</span>
           </Link>

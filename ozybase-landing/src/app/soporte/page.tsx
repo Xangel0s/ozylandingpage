@@ -48,7 +48,7 @@ export default function Soporte() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <a
                   href="/contacto"
-                  className="px-8 py-4 bg-success-neon text-black font-mono text-sm font-bold rounded-none hover:brightness-110 transition-all flex items-center gap-2"
+                  className="px-8 py-4 border border-success-neon bg-success-neon text-black font-mono text-sm font-bold rounded-none hover:bg-transparent hover:text-success-neon transition-all flex items-center gap-2"
                 >
                   Iniciar Consulta
                   <ArrowRight className="w-4 h-4" />

@@ -41,7 +41,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center pt-4">
             <a
               href="#contacto"
-              className="w-full sm:w-auto bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-opacity-95 transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto border border-success-neon bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-transparent hover:text-success-neon transition-all flex items-center justify-center gap-2 group"
             >
               Contactar Ventas
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

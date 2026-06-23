@@ -241,7 +241,7 @@ export default function ContactForm() {
                     <button
                       type="submit"
                       disabled={status === "submitting"}
-                      className="w-full bg-success-neon text-black py-4 font-mono text-sm font-extrabold uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 rounded disabled:opacity-75 disabled:pointer-events-none"
+                      className="w-full border border-success-neon bg-success-neon text-black py-4 font-mono text-sm font-extrabold uppercase tracking-widest hover:bg-transparent hover:text-success-neon active:scale-[0.98] transition-all flex items-center justify-center gap-2 rounded disabled:opacity-75 disabled:pointer-events-none"
                     >
                       {status === "submitting" ? (
                         <>

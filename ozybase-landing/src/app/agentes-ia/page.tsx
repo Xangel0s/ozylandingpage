@@ -53,7 +53,7 @@ export default function AgentesIa() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/contacto"
-                  className="bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:brightness-110 active:scale-95 transition-all flex items-center justify-center animate-none"
+                  className="border border-success-neon bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-transparent hover:text-success-neon active:scale-95 transition-all flex items-center justify-center animate-none"
                 >
                   DESPLEGAR AGENTES
                 </a>

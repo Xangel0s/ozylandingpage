@@ -49,7 +49,7 @@ export default function Digitalizacion() {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
                   href="/contacto"
-                  className="px-8 py-4 bg-success-neon text-black font-mono text-sm font-bold rounded hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
+                  className="px-8 py-4 border border-success-neon bg-success-neon text-black font-mono text-sm font-bold rounded hover:bg-transparent hover:text-success-neon active:scale-95 transition-all flex items-center justify-center gap-2"
                 >
                   Comenzar Migración
                   <Play className="w-4 h-4" />

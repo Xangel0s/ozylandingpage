@@ -26,7 +26,7 @@ export default function CTA({
           <Link
             href={ctaLink}
             id="cta-contact-button"
-            className="bg-black text-white px-10 py-5 rounded font-mono text-sm font-bold hover:bg-black/90 active:scale-95 transition-all reveal-left"
+            className="border border-black bg-black text-white px-10 py-5 rounded font-mono text-sm font-bold hover:bg-transparent hover:text-black active:scale-95 transition-all reveal-left"
           >
             {ctaText}
           </Link>
