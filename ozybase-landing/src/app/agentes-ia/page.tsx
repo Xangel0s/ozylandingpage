@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TerminalLogs from "@/components/TerminalLogs";
 import CTA from "@/components/CTA";
-import { Radar, Cpu, Zap, Fingerprint, FolderSync, ShieldCheck } from "lucide-react";
+import { Radar, Cpu, Zap, Fingerprint, FolderSync, ShieldCheck, Server, Headphones } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Agentes de IA y Monitoreo Autónomo | OzyBase",
@@ -202,6 +202,97 @@ export default function AgentesIa() {
                     <p className="text-terminal-gray text-sm md:text-base">Lógica de auto-sanación que actualiza y parchea el core de monitoreo sin tiempos de inactividad.</p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Modelos de Implementación */}
+        <section className="py-24 bg-[#0a0a0a] border-t border-border-subtle">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-16">
+            <div className="text-center mb-16 space-y-4">
+              <span className="font-mono text-xs text-success-neon uppercase tracking-widest block reveal-left">
+                Esquemas de Implementación
+              </span>
+              <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight reveal-left">
+                Elige cómo operar tus Agentes de IA
+              </h2>
+              <p className="text-terminal-gray text-base md:text-lg max-w-2xl mx-auto reveal-right">
+                Ofrecemos la flexibilidad de integrar nuestro sistema en la infraestructura de tu equipo técnico o gestionar la operación completa por ti.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Opción 1: Licencia / Self-Hosted */}
+              <div className="bg-[#141414] p-8 border border-border-subtle rounded-xl flex flex-col h-full hover:border-success-neon/30 hover:shadow-[0_0_30px_rgba(210,242,11,0.02)] transition-all group reveal-left">
+                <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 flex items-center justify-center mb-8 rounded group-hover:scale-105 transition-transform">
+                  <Server className="w-6 h-6 text-success-neon" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2 font-headline">
+                  Plataforma Autogestionada
+                </h3>
+                <p className="text-success-neon font-mono text-xs mb-4 uppercase tracking-wider">
+                  Licencia & Panel para tu Equipo
+                </p>
+                <p className="text-terminal-gray text-sm md:text-base mb-8 grow">
+                  Obtén el sistema completo de agentes binarios y el panel de control (estilo supportdesk) para que tu propio equipo interno de IT, DevOps o SRE gestione y monitoree los servidores con total autonomía.
+                </p>
+                <div className="space-y-4 border-t border-border-subtle pt-6 mb-8 font-mono text-xs text-white">
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-success-neon rounded-full"></span>
+                    <span>Panel de Control de Monitoreo Local</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-success-neon rounded-full"></span>
+                    <span>Despliegue Ilimitado de Binarios</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-success-neon rounded-full"></span>
+                    <span>Integración Directa con tu Stack</span>
+                  </div>
+                </div>
+                <a
+                  href="/contacto?modelo=autogestionado"
+                  className="w-full py-4 text-center border border-border-subtle bg-transparent text-white font-mono text-xs font-bold rounded hover:border-success-neon hover:text-success-neon active:scale-98 transition-all uppercase"
+                >
+                  Obtener Plataforma
+                </a>
+              </div>
+
+              {/* Opción 2: Soporte Gestionado */}
+              <div className="bg-[#141414] p-8 border border-border-subtle rounded-xl flex flex-col h-full hover:border-success-neon/30 hover:shadow-[0_0_30px_rgba(210,242,11,0.02)] transition-all group reveal-right">
+                <div className="w-12 h-12 bg-success-neon/5 border border-success-neon/20 flex items-center justify-center mb-8 rounded group-hover:scale-105 transition-transform">
+                  <Headphones className="w-6 h-6 text-success-neon" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2 font-headline">
+                  Soporte & Operación
+                </h3>
+                <p className="text-success-neon font-mono text-xs mb-4 uppercase tracking-wider">
+                  Monitoreo 24/7 Administrado
+                </p>
+                <p className="text-terminal-gray text-sm md:text-base mb-8 grow">
+                  Delega la configuración, actualización y respuesta ante incidentes en nuestro equipo de ingenieros expertos. Nos encargamos de mantener tus agentes autónomos optimizados y tu infraestructura protegida.
+                </p>
+                <div className="space-y-4 border-t border-border-subtle pt-6 mb-8 font-mono text-xs text-white">
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-success-neon rounded-full"></span>
+                    <span>Instalación y Configuración VIP</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-success-neon rounded-full"></span>
+                    <span>Monitoreo Activo & Remediación 24/7</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 bg-success-neon rounded-full"></span>
+                    <span>SLA y Soporte Técnico Dedicado</span>
+                  </div>
+                </div>
+                <a
+                  href="/contacto?modelo=soporte"
+                  className="w-full py-4 text-center border border-border-subtle bg-success-neon text-black font-mono text-xs font-bold rounded hover:bg-transparent hover:text-success-neon active:scale-98 transition-all uppercase"
+                >
+                  Contratar Soporte
+                </a>
               </div>
             </div>
           </div>
