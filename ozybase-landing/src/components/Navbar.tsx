@@ -12,11 +12,14 @@ export default function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setCoords({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
+    const textElement = e.currentTarget.querySelector(".logo-text-wrapper");
+    if (textElement) {
+      const textRect = textElement.getBoundingClientRect();
+      setCoords({
+        x: e.clientX - textRect.left,
+        y: e.clientY - textRect.top,
+      });
+    }
   };
 
   const navLinks = [
@@ -37,19 +40,22 @@ export default function Navbar() {
           onMouseLeave={() => setIsHovered(false)}
           className="relative overflow-hidden flex items-center gap-3 font-headline text-2xl font-bold tracking-tighter text-white px-3 py-1.5 rounded-lg group transition-all duration-300"
         >
-          {/* Ripple Hover Circle */}
-          <span
-            className="absolute rounded-full bg-success-neon/15 pointer-events-none transition-all duration-700 ease-out -translate-x-1/2 -translate-y-1/2"
-            style={{
-              left: coords.x,
-              top: coords.y,
-              width: isHovered ? "280px" : "0px",
-              height: isHovered ? "280px" : "0px",
-              opacity: isHovered ? 1 : 0,
-            }}
-          />
           <img src="/ozybaselogo.png" alt="OzyBase Logo" className="h-8 w-8 rounded object-cover z-10" />
-          <span className="z-10 transition-colors duration-300 group-hover:text-success-neon">OzyBase</span>
+          
+          <div className="relative logo-text-wrapper z-10">
+            {/* Base Text (White) */}
+            <span className="text-white">OzyBase</span>
+            
+            {/* Overlay Text (Green) that expands from the cursor coordinate */}
+            <span
+              className="absolute top-0 left-0 text-success-neon pointer-events-none transition-all duration-700 ease-out select-none whitespace-nowrap"
+              style={{
+                clipPath: `circle(${isHovered ? "200%" : "0%"} at ${coords.x}px ${coords.y}px)`,
+              }}
+            >
+              OzyBase
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Links */}
