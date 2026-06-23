@@ -55,7 +55,7 @@ export default function ContactForm() {
             </div>
 
             <h2 className="font-headline text-3xl md:text-5xl font-extrabold text-white leading-tight">
-              Contactar con <span className="text-success-neon">Ventas</span>
+              Obtén un precio <span className="text-success-neon">personalizado</span>
             </h2>
 
             <p className="text-terminal-gray text-base md:text-lg max-w-xl font-sans">
