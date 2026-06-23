@@ -7,6 +7,7 @@ interface ServiceOption {
   name: string;
   message: string;
   icon: any;
+  description?: string;
 }
 
 const servicesList: ServiceOption[] = [
@@ -14,6 +15,7 @@ const servicesList: ServiceOption[] = [
     name: "Soporte Técnico",
     message: "Hola OzyBase, estoy interesado en el servicio de Soporte Técnico para mis sistemas u oficinas.",
     icon: Server,
+    description: "Remoto / Presencial",
   },
   {
     name: "Agentes IA",
@@ -82,7 +84,9 @@ export default function WhatsAppFloating() {
                 </div>
                 <div>
                   <span className="font-bold block group-hover:text-success-neon">{service.name}</span>
-                  <span className="text-[10px] text-terminal-gray/80 line-clamp-1">Consultar por WhatsApp</span>
+                  <span className="text-[10px] text-terminal-gray/80 line-clamp-1">
+                    {service.description || "Consultar por WhatsApp"}
+                  </span>
                 </div>
               </button>
             );
