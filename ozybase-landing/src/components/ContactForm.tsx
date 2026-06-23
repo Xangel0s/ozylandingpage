@@ -25,7 +25,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="relative py-24 bg-black overflow-hidden border-t border-border-subtle" id="contacto">
+    <section className="relative py-16 md:py-24 bg-black overflow-hidden border-t border-border-subtle grow flex items-center" id="contacto">
       {/* Background Video */}
       <video
         src="/Videos/Codes.mp4"

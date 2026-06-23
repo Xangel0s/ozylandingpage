@@ -15,7 +15,7 @@ export default function Contacto() {
   return (
     <>
       <Navbar />
-      <main className="grow bg-black">
+      <main className="grow bg-black flex flex-col">
         <ContactForm />
       </main>
       <Footer />
