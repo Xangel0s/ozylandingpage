@@ -26,7 +26,7 @@ const steps: StepMessage[] = [
   {
     id: 1,
     sender: "client",
-    senderName: "Nora (SRE Lead)",
+    senderName: "Nora (Commercial Manager)",
     avatarIcon: User,
     avatarBg: "bg-zinc-850 border-zinc-700 text-zinc-400",
     timeLabel: "Hace 1 min",
@@ -36,7 +36,7 @@ const steps: StepMessage[] = [
   {
     id: 2,
     sender: "ai",
-    senderName: "Robin AI (OzyBase)",
+    senderName: "Ozy (Ozybase Agent IA)",
     avatarIcon: Sparkles,
     avatarBg: "bg-success-neon/10 border-success-neon/20 text-success-neon",
     timeLabel: "Hace un momento",
@@ -48,7 +48,7 @@ const steps: StepMessage[] = [
   {
     id: 3,
     sender: "ai",
-    senderName: "Robin AI (OzyBase)",
+    senderName: "Ozy (Ozybase Agent IA)",
     avatarIcon: Sparkles,
     avatarBg: "bg-success-neon/10 border-success-neon/20 text-success-neon",
     timeLabel: "Hace un momento",
@@ -58,7 +58,7 @@ const steps: StepMessage[] = [
   {
     id: 4,
     sender: "engineer",
-    senderName: "Julián (Soporte L3)",
+    senderName: "Julián",
     avatarIcon: User,
     avatarBg: "bg-blue-950/30 border-blue-500/20 text-blue-400",
     timeLabel: "Hace un momento",
@@ -68,7 +68,7 @@ const steps: StepMessage[] = [
   {
     id: 5,
     sender: "ai",
-    senderName: "Robin AI (OzyBase)",
+    senderName: "Ozy (Ozybase Agent IA)",
     avatarIcon: Sparkles,
     avatarBg: "bg-success-neon/10 border-success-neon/20 text-success-neon",
     timeLabel: "Hace un momento",
@@ -84,7 +84,7 @@ const steps: StepMessage[] = [
   {
     id: 6,
     sender: "client",
-    senderName: "Nora (SRE Lead)",
+    senderName: "Nora (Commercial Manager)",
     avatarIcon: User,
     avatarBg: "bg-zinc-850 border-zinc-700 text-zinc-400",
     timeLabel: "Justo ahora",
@@ -186,11 +186,6 @@ export default function ChatSimulator() {
             </div>
           );
         })}
-      </div>
-
-      {/* Small floating reset indicator */}
-      <div className="absolute bottom-[-16px] right-2 text-[9px] font-mono text-terminal-gray/30 hover:text-success-neon/60 transition-colors z-20">
-        <button onClick={() => setActiveStep(1)}>REINICIAR FLUX</button>
       </div>
     </div>
   );
