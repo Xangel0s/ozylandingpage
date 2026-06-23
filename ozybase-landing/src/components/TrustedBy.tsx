@@ -29,7 +29,7 @@ export default function TrustedBy() {
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-10 max-w-[200px] object-contain"
+                className="h-16 max-w-[220px] object-contain"
               />
             </div>
           ))}
@@ -42,7 +42,7 @@ export default function TrustedBy() {
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-10 max-w-[200px] object-contain"
+                className="h-16 max-w-[220px] object-contain"
               />
             </div>
           ))}
