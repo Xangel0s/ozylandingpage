@@ -58,7 +58,14 @@ export default function Digitalizacion() {
             
             <div className="lg:col-span-6 relative h-[350px] lg:h-[450px] w-full">
               <div className="w-full h-full rounded-xl border border-border-subtle bg-[#141414] overflow-hidden relative group">
-                <div className="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-luminosity filter grayscale" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida/AP1WRLuFBhkKlSibpIlfI2b1Jdkiriyc-CQIPsY4Lk3iPHVM80-QZkFKDBDbzGgIaT2UpNaiK6djdYFbPeS7KYY7ojdaExHOqYLJhRh3uUwbS-pWu0Z9NgHAfYHG4A3K_LgEKfmBsDoG_JRJGivgfymIGiwdqOcdLMzfo6xLRMdI3rzqfYg-Ua9Q4OWoCwedT5lwTJkVN0_kO3rZ-bvfvdsj29QKrEp05j3cEuzc3D4IdFR9F8OXvNUSRE_Tv9s')" }}></div>
+                <video
+                  src="/Videos/Videos-contenido/automatizacion-excel.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity filter grayscale"
+                />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"></div>
                 {/* Overlay UI elements */}
                 <div className="absolute top-4 left-4 bg-black/85 backdrop-blur p-4 border border-border-subtle rounded-lg max-w-[220px]">
