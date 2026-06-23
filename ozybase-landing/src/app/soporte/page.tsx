@@ -37,7 +37,7 @@ export default function Soporte() {
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle text-success-neon font-mono text-xs rounded-full reveal-left">
                 <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
-                SISTEMAS OPERATIVOS 24/7
+                SOPORTE 24/7
               </div>
               <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight reveal-left">
                 Soporte Técnico <span className="text-success-neon">Profesional</span>

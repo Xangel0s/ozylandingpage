@@ -35,10 +35,9 @@ export default function Digitalizacion() {
 
           <div className="max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-block px-3 py-1 bg-success-neon/10 border border-success-neon/20 rounded reveal-left">
-                <span className="font-mono text-xs text-success-neon uppercase tracking-widest">
-                  Migración de Datos v2.4
-                </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle text-success-neon font-mono text-xs rounded-full reveal-left">
+                <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
+                AUTOMATIZAMOS TUS ARCHIVOS
               </div>
               <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight reveal-left">
                 Digitalización de Procesos: <span className="text-success-neon">Adiós al Excel Manual</span>

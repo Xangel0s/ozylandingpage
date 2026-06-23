@@ -37,11 +37,9 @@ export default function AgentesIa() {
 
           <div className="relative z-10 max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle rounded-full reveal-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle text-success-neon font-mono text-xs rounded-full reveal-left">
                 <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
-                <span className="font-mono text-xs text-success-neon uppercase tracking-widest">
-                  Autonomous Core Active
-                </span>
+                AGENTES IA AUTÓNOMOS
               </div>
               <h1 className="font-headline text-4xl md:text-6.5xl font-extrabold text-white leading-tight reveal-left">
                 Agentes IA & <br />
