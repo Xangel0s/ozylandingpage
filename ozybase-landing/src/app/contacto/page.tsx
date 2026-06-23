@@ -4,8 +4,15 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Contactar con Ventas y Soporte Técnico | OzyBase",
-  description: "Ponte en contacto directo con nuestros ingenieros especializados. Garantizamos un tiempo de respuesta de menos de 15 minutos para consultas de TI.",
+  title: "Contacto de Ventas y Soporte de TI",
+  description: "Póngase en contacto directo con OzyBase. Hable con un ingeniero especializado de Nivel 3 o solicite una cotización de soporte de TI y agentes de IA.",
+  keywords: [
+    "Contacto OzyBase",
+    "Soporte técnico empresas",
+    "Cotización soporte TI",
+    "Ventas OzyBase",
+    "Consultoría de sistemas"
+  ],
   alternates: {
     canonical: "https://ozybase.com/contacto",
   },

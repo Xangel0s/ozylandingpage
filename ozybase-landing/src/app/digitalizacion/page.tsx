@@ -5,8 +5,16 @@ import CTA from "@/components/CTA";
 import { BarChart, Server, Layers, Play, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Digitalización de Procesos y Migración de Excel | OzyBase",
-  description: "Transformamos tus hojas de cálculo manuales de Excel en arquitecturas web rápidas, seguras y de precisión matemática absoluta en la nube.",
+  title: "Digitalización de Procesos y Automatización de Excel",
+  description: "Transforme sus hojas de cálculo manuales de Excel en sistemas web rápidos, seguros y escalables. Elimine errores humanos mediante la automatización de procesos heredados.",
+  keywords: [
+    "Digitalización de procesos",
+    "Automatización de Excel",
+    "Migración de Excel a base de datos",
+    "Sistemas a medida",
+    "Optimización de flujos de trabajo",
+    "Software para empresas"
+  ],
   alternates: {
     canonical: "https://ozybase.com/digitalizacion",
   },

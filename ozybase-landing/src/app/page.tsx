@@ -8,14 +8,22 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "OzyBase | Expertos en Soporte Técnico y Automatización con IA",
-  description: "Elevamos la productividad de tu empresa mediante soporte especializado 24/7 y agentes de IA inteligentes diseñados para optimizar tu infraestructura sin intervención manual.",
+  title: "OzyBase | Soporte Técnico de TI, Agentes de IA y Digitalización para Empresas",
+  description: "Optimice su infraestructura digital con soporte de sistemas 24/7, agentes autónomos de IA y migración de procesos de Excel a la nube. Evite caídas y acelere sus operaciones.",
+  keywords: [
+    "Soporte técnico para empresas",
+    "Soporte TI 24/7",
+    "Agentes de IA autónomos",
+    "Digitalización de procesos",
+    "Monitoreo de servidores",
+    "Outsourcing tecnológico"
+  ],
   alternates: {
     canonical: "https://ozybase.com",
   },
   openGraph: {
-    title: "OzyBase | Soporte Técnico y Automatización con IA",
-    description: "Soporte especializado 24/7 y agentes autónomos de IA para optimizar tu infraestructura digital.",
+    title: "OzyBase | Soporte Técnico de TI, Agentes de IA y Digitalización",
+    description: "Soporte especializado de sistemas 24/7 y agentes inteligentes de IA para automatizar y optimizar la infraestructura de su empresa.",
     url: "https://ozybase.com",
     type: "website",
     images: [

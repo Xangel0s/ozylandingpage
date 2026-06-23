@@ -6,8 +6,16 @@ import CTA from "@/components/CTA";
 import { Radar, Cpu, Zap, Fingerprint, FolderSync, ShieldCheck, Server, Headphones } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Agentes de IA y Monitoreo Autónomo | OzyBase",
-  description: "Elimina el monitoreo manual. Despliega binarios especializados de baja latencia con memoria persistente para vigilar tu infraestructura 24/7.",
+  title: "Agentes de IA y Monitoreo Autónomo de Servidores",
+  description: "Despliegue agentes autónomos de IA y binarios de monitoreo proactivo 24/7. Prevenga fallas y autogestione su infraestructura de sistemas sin personal manual.",
+  keywords: [
+    "Agentes de IA",
+    "Monitoreo autónomo de servidores",
+    "Monitoreo proactivo de TI",
+    "Automatización de infraestructura",
+    "Inteligencia Artificial DevOps",
+    "Sistemas de auto-sanación"
+  ],
   alternates: {
     canonical: "https://ozybase.com/agentes-ia",
   },
