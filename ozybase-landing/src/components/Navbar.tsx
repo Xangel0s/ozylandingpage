@@ -8,6 +8,16 @@ import { Terminal, Menu, X, MessageSquare } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setCoords({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
 
   const navLinks = [
     { name: "Inicio", href: "/" },
@@ -20,9 +30,26 @@ export default function Navbar() {
     <nav className="sticky top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border-subtle">
       <div className="flex justify-between items-center h-16 px-6 md:px-16 max-w-[1280px] mx-auto">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 font-headline text-2xl font-bold tracking-tighter text-white">
-          <img src="/ozybaselogo.png" alt="OzyBase Logo" className="h-8 w-8 rounded object-cover" />
-          <span>OzyBase</span>
+        <Link
+          href="/"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="relative overflow-hidden flex items-center gap-3 font-headline text-2xl font-bold tracking-tighter text-white px-3 py-1.5 rounded-lg group transition-all duration-300"
+        >
+          {/* Ripple Hover Circle */}
+          <span
+            className="absolute rounded-full bg-success-neon/15 pointer-events-none transition-all duration-700 ease-out -translate-x-1/2 -translate-y-1/2"
+            style={{
+              left: coords.x,
+              top: coords.y,
+              width: isHovered ? "280px" : "0px",
+              height: isHovered ? "280px" : "0px",
+              opacity: isHovered ? 1 : 0,
+            }}
+          />
+          <img src="/ozybaselogo.png" alt="OzyBase Logo" className="h-8 w-8 rounded object-cover z-10" />
+          <span className="z-10 transition-colors duration-300 group-hover:text-success-neon">OzyBase</span>
         </Link>
 
         {/* Desktop Links */}
