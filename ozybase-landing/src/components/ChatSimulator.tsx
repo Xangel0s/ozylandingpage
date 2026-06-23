@@ -104,30 +104,32 @@ export default function ChatSimulator() {
     return () => clearInterval(interval);
   }, []);
 
+  // Show only the latest 3 active messages to prevent layout stretching
+  const startIndex = Math.max(0, activeStep - 3);
+  const visibleMessages = steps.slice(startIndex, activeStep);
+
   return (
-    <div className="w-full flex flex-col justify-end space-y-6 min-h-[420px] relative px-2">
+    <div className="w-full flex flex-col justify-end space-y-6 min-h-[420px] max-h-[480px] relative px-2">
       {/* Top opacity gradient mask to blend with the background */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black to-transparent pointer-events-none z-20"></div>
 
       <div className="space-y-6 flex flex-col justify-end overflow-hidden pb-4">
-        {steps.slice(0, activeStep).map((msg) => {
+        {visibleMessages.map((msg) => {
           const AvatarIcon = msg.avatarIcon;
           
           // Calculate dynamic fading opacity based on relative position to the newest message
           const distance = activeStep - msg.id;
           let opacityClass = "opacity-100 scale-100 blur-none";
           if (distance === 1) {
-            opacityClass = "opacity-80 scale-[0.98] blur-[0.5px]";
-          } else if (distance === 2) {
-            opacityClass = "opacity-50 scale-[0.96] blur-[1px]";
-          } else if (distance >= 3) {
-            opacityClass = "opacity-20 scale-[0.94] blur-[1.5px]";
+            opacityClass = "opacity-75 scale-[0.98] blur-[0.5px]";
+          } else if (distance >= 2) {
+            opacityClass = "opacity-30 scale-[0.96] blur-[1px]";
           }
 
           return (
             <div
               key={msg.id}
-              className={`flex gap-4 max-w-[85%] items-start transition-all duration-700 ease-out transform origin-bottom ${opacityClass} ${
+              className={`flex gap-4 max-w-[90%] items-start transition-all duration-700 ease-out transform origin-bottom ${opacityClass} ${
                 msg.sender === "client" ? "self-start" : "self-end flex-row-reverse"
               }`}
             >
