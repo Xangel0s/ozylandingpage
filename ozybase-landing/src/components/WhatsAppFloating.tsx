@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, Server, Cpu, Layers, Activity, X } from "lucide-react";
+import { MessageCircle, Server, Cpu, Layers, Activity, X, Database } from "lucide-react";
 
 interface ServiceOption {
   name: string;
@@ -30,6 +30,11 @@ const servicesList: ServiceOption[] = [
     message: "Hola OzyBase, quiero solicitar una demostración y cotización de la Plataforma de Diagnósticos.",
     icon: Activity,
   },
+  {
+    name: "Copias de Seguridad (Backup)",
+    message: "Hola OzyBase, estoy interesado en el servicio de Copias de Seguridad (Backup) para resguardar mis datos.",
+    icon: Database,
+  },
 ];
 
 export default function WhatsAppFloating() {
@@ -44,7 +49,7 @@ export default function WhatsAppFloating() {
   };
 
   return (
-    <div className="fixed bottom-10 right-10 z-50 font-sans">
+    <div className="fixed bottom-10 right-12 z-50 font-sans">
       {/* Services Menu Popup */}
       <div
         className={`absolute bottom-16 right-0 w-72 bg-[#141414]/95 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-2xl space-y-3 relative z-50 transition-all duration-300 origin-bottom-right ${
