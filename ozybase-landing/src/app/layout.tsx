@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter, JetBrains_Mono } from "next/font/google";
 import ScrollRevealManager from "@/components/ScrollRevealManager";
+import WhatsAppFloating from "@/components/WhatsAppFloating";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,6 +43,7 @@ export default function RootLayout({
       >
         <ScrollRevealManager />
         {children}
+        <WhatsAppFloating />
       </body>
     </html>
   );
