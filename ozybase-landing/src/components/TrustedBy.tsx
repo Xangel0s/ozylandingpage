@@ -4,11 +4,11 @@ export default function TrustedBy() {
   const logos = [
     { name: "Edvio", src: "/Logos/Edvio.png", className: "h-12 max-w-[220px]" },
     { name: "Lima Green", src: "/Logos/Lima green.png", className: "h-[68px] max-w-[220px]" },
-    { name: "Elifyr", src: "/Logos/elifyr.png", className: "h-[68px] max-w-[220px]" },
-    { name: "La Casa de la Construcción", src: "/Logos/lacasadelaconstruccion.png", className: "h-[76px] max-w-[220px]" },
+    { name: "Elifyr", src: "/Logos/elifyr.png", className: "h-[80px] max-w-[230px]" },
+    { name: "La Casa de la Construcción", src: "/Logos/lacasadelaconstruccion.png", className: "h-[120px] max-w-[240px]" },
     { name: "Edvio", src: "/Logos/Edvio.png", className: "h-12 max-w-[220px]" },
     { name: "Lima Green", src: "/Logos/Lima green.png", className: "h-[68px] max-w-[220px]" },
-    { name: "Elifyr", src: "/Logos/elifyr.png", className: "h-[68px] max-w-[220px]" },
+    { name: "Elifyr", src: "/Logos/elifyr.png", className: "h-[120px] max-w-[230px]" },
   ];
 
   return (
