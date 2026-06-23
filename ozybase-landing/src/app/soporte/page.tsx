@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
+import ChatSimulator from "@/components/ChatSimulator";
 import { Server, TrendingUp, ShieldAlert, ArrowRight, Bolt, BookOpen, Shield, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -56,22 +57,8 @@ export default function Soporte() {
               </div>
             </div>
 
-            <div className="hidden md:block">
-              <div className="bg-[#141414] border border-border-subtle p-6 space-y-4 rounded-lg">
-                <div className="flex items-center justify-between border-b border-border-subtle pb-4">
-                  <span className="font-mono text-xs text-white uppercase tracking-widest">Network_Status</span>
-                  <span className="text-success-neon font-mono text-xs font-bold">ALL_SYSTEMS_GO</span>
-                </div>
-                <div className="space-y-2.5 font-mono text-xs text-terminal-gray">
-                  <p className="flex justify-between"><span>Latency:</span> <span className="text-white">12ms</span></p>
-                  <p className="flex justify-between"><span>Uptime:</span> <span className="text-white">99.9999%</span></p>
-                  <p className="flex justify-between"><span>Active Nodes:</span> <span className="text-white">1,402</span></p>
-                  <p className="flex justify-between"><span>Queue Depth:</span> <span className="text-white">0</span></p>
-                </div>
-                <div className="h-[2px] w-full bg-border-subtle relative overflow-hidden">
-                  <div className="absolute inset-0 bg-success-neon w-1/3 animate-[slide_2s_infinite_linear]"></div>
-                </div>
-              </div>
+            <div className="w-full">
+              <ChatSimulator />
             </div>
           </div>
         </header>
@@ -155,27 +142,136 @@ export default function Soporte() {
           </div>
         </section>
 
-        {/* Stats Banner */}
-        <div className="bg-[#141414] py-12 border-y border-border-subtle">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">500+</p>
-              <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">Nodos Activos</p>
-            </div>
-            <div>
-              <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">15m</p>
-              <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">SLA Respuesta</p>
-            </div>
-            <div>
-              <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">99.9%</p>
-              <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">Uptime Garantizado</p>
-            </div>
-            <div>
-              <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">24/7</p>
-              <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">Monitoreo Global</p>
-            </div>
-          </div>
-        </div>
+         {/* Stats Banner */}
+         <div className="bg-[#141414] py-12 border-y border-border-subtle">
+           <div className="max-w-[1280px] mx-auto px-6 md:px-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+             <div>
+               <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">500+</p>
+               <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">Nodos Activos</p>
+             </div>
+             <div>
+               <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">15m</p>
+               <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">SLA Respuesta</p>
+             </div>
+             <div>
+               <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">99.9%</p>
+               <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">Uptime Garantizado</p>
+             </div>
+             <div>
+               <p className="font-headline text-3xl md:text-5xl font-extrabold text-success-neon">24/7</p>
+               <p className="font-mono text-xs text-terminal-gray uppercase tracking-wider mt-2">Monitoreo Global</p>
+             </div>
+           </div>
+         </div>
+
+         {/* Preformero de Soporte */}
+         <section className="py-24 bg-black border-t border-border-subtle">
+           <div className="max-w-[1280px] mx-auto px-6 md:px-16">
+             <div className="text-center mb-16 space-y-4">
+               <span className="font-mono text-xs text-success-neon uppercase tracking-widest block">
+                 Cotización de Servicio
+               </span>
+               <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
+                 Preformero de Propuesta Técnica
+               </h2>
+               <p className="text-terminal-gray text-base md:text-lg max-w-2xl mx-auto">
+                 Estructura de costos y alcances formalizada para tu departamento de IT. Selecciona el acuerdo de nivel de servicio (SLA) requerido.
+               </p>
+             </div>
+
+             {/* Proposal Sheet Layout */}
+             <div className="bg-[#141414] border border-border-subtle rounded-xl overflow-hidden shadow-2xl max-w-5xl mx-auto">
+               {/* Proposal Header */}
+               <div className="p-8 border-b border-border-subtle bg-black/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                 <div>
+                   <div className="text-white font-headline text-xl font-bold">OZYBASE INFRASTRUCTURE SERVICES</div>
+                   <div className="text-terminal-gray font-mono text-xs mt-1">Nº PROPUESTA: PROP-2026-SOP404</div>
+                 </div>
+                 <div className="text-right font-mono text-xs text-terminal-gray space-y-1">
+                   <div>EMISIÓN: 2026-06-23</div>
+                   <div>VALIDEZ: 30 DÍAS</div>
+                   <div className="text-success-neon font-bold">SLA RESPUESTA GARANTIZADA</div>
+                 </div>
+               </div>
+
+               {/* Proposal Table */}
+               <div className="overflow-x-auto">
+                 <table className="w-full text-left font-mono text-xs text-white border-collapse">
+                   <thead>
+                     <tr className="border-b border-border-subtle bg-[#1e1e1e] text-terminal-gray uppercase text-[10px] tracking-wider">
+                       <th className="p-6">Especificación del Servicio</th>
+                       <th className="p-6">Soporte Pymes</th>
+                       <th className="p-6">Soporte Avanzado</th>
+                       <th className="p-6 text-success-neon">Soporte Enterprise (L3)</th>
+                     </tr>
+                   </thead>
+                   <tbody className="divide-y divide-border-subtle/50">
+                     <tr>
+                       <td className="p-6 font-bold text-white">Tiempo de Respuesta (SLA)</td>
+                       <td className="p-6 text-terminal-gray">Siguiente día hábil</td>
+                       <td className="p-6 text-terminal-gray">Menos de 2 horas</td>
+                       <td className="p-6 text-success-neon font-bold">Menos de 15 minutos</td>
+                     </tr>
+                     <tr>
+                       <td className="p-6 font-bold text-white">Canales de Comunicación</td>
+                       <td className="p-6 text-terminal-gray">Email & Web Panel</td>
+                       <td className="p-6 text-terminal-gray">Slack Dedicado & Email</td>
+                       <td className="p-6 text-white">Slack, WhatsApp, Gmail, Teléfono Directo</td>
+                     </tr>
+                     <tr>
+                       <td className="p-6 font-bold text-white">Ingenieros Asignados</td>
+                       <td className="p-6 text-terminal-gray">Equipo general (L1/L2)</td>
+                       <td className="p-6 text-terminal-gray">Pool asignado (L2)</td>
+                       <td className="p-6 text-white">Ingeniero L3 Dedicado Asignado</td>
+                     </tr>
+                     <tr>
+                       <td className="p-6 font-bold text-white">Monitoreo de Infraestructura</td>
+                       <td className="p-6 text-terminal-gray">Reactivo (Reporte de cliente)</td>
+                       <td className="p-6 text-terminal-gray">Proactivo básico (Logs)</td>
+                       <td className="p-6 text-white">Diagnóstico Autónomo por IA 24/7</td>
+                     </tr>
+                     <tr>
+                       <td className="p-6 font-bold text-white">Auditorías de Seguridad</td>
+                       <td className="p-6 text-terminal-gray">No incluido</td>
+                       <td className="p-6 text-terminal-gray">Mensual</td>
+                       <td className="p-6 text-white">Continua en tiempo real</td>
+                     </tr>
+                     <tr className="bg-[#1e1e1e]/20">
+                       <td className="p-6 font-bold text-white">Valor Estimado de Inversión</td>
+                       <td className="p-6">
+                         <span className="text-white font-bold text-sm">Desde $299</span>
+                         <span className="text-terminal-gray text-[10px] block">/ mes</span>
+                       </td>
+                       <td className="p-6">
+                         <span className="text-white font-bold text-sm">Desde $899</span>
+                         <span className="text-terminal-gray text-[10px] block">/ mes</span>
+                       </td>
+                       <td className="p-6">
+                         <span className="text-success-neon font-bold text-sm">Desde $1,899</span>
+                         <span className="text-terminal-gray text-[10px] block">/ mes</span>
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+
+               {/* Proposal Actions */}
+               <div className="p-8 border-t border-border-subtle bg-black/40 flex flex-col sm:flex-row justify-between items-center gap-6">
+                 <div className="text-terminal-gray font-mono text-[10px] max-w-md leading-relaxed text-center sm:text-left">
+                   NOTA: Todos los presupuestos son aproximados y ajustados según la cantidad de servidores activos y la complejidad del pipeline de DevOps.
+                 </div>
+                 <div className="flex gap-4 w-full sm:w-auto">
+                   <a
+                     href="/contacto?servicio=Soporte+Técnico"
+                     className="w-full sm:w-auto px-8 py-4 border border-success-neon bg-success-neon text-black font-mono text-xs font-bold rounded hover:bg-transparent hover:text-success-neon text-center uppercase transition-all"
+                   >
+                     Obtener Propuesta en PDF
+                   </a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
 
         {/* Security & Commitment Section */}
         <section className="py-24 bg-[#0a0a0a]">
