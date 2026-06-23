@@ -58,7 +58,7 @@ const steps: StepMessage[] = [
   {
     id: 4,
     sender: "engineer",
-    senderName: "Julián",
+    senderName: "Julián (Soporte L3)",
     avatarIcon: User,
     avatarBg: "bg-blue-950/30 border-blue-500/20 text-blue-400",
     timeLabel: "Hace un momento",
