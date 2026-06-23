@@ -46,40 +46,44 @@ export default function WhatsAppFloating() {
   return (
     <div className="fixed bottom-6 right-6 z-50 font-sans">
       {/* Services Menu Popup */}
-      {isOpen && (
-        <div className="absolute bottom-16 right-0 w-72 bg-[#141414]/95 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-2xl space-y-3 animate-[fadeIn_0.2s_ease-out] relative z-50">
-          <div className="flex justify-between items-center border-b border-white/5 pb-2">
-            <span className="text-[10px] font-mono text-terminal-gray uppercase tracking-widest">¿En qué podemos ayudarte?</span>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-terminal-gray hover:text-white transition-colors"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="space-y-2">
-            {servicesList.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <button
-                  key={index}
-                  onClick={() => handleRedirect(service.message)}
-                  className="w-full flex items-center gap-3 p-3 bg-black/40 hover:bg-success-neon/10 border border-white/5 hover:border-success-neon/30 text-left text-xs text-white rounded-xl transition-all group"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-white/5 group-hover:bg-success-neon/10 border border-white/5 group-hover:border-success-neon/20 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-terminal-gray group-hover:text-success-neon" />
-                  </div>
-                  <div>
-                    <span className="font-bold block group-hover:text-success-neon">{service.name}</span>
-                    <span className="text-[10px] text-terminal-gray/80 line-clamp-1">Consultar por WhatsApp</span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+      <div
+        className={`absolute bottom-16 right-0 w-72 bg-[#141414]/95 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-2xl space-y-3 relative z-50 transition-all duration-300 origin-bottom-right ${
+          isOpen
+            ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 scale-90 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <div className="flex justify-between items-center border-b border-white/5 pb-2">
+          <span className="text-[10px] font-mono text-terminal-gray uppercase tracking-widest">¿En qué podemos ayudarte?</span>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="text-terminal-gray hover:text-white transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
-      )}
+
+        <div className="space-y-2">
+          {servicesList.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <button
+                key={index}
+                onClick={() => handleRedirect(service.message)}
+                className="w-full flex items-center gap-3 p-3 bg-black/40 hover:bg-success-neon/10 border border-white/5 hover:border-success-neon/30 text-left text-xs text-white rounded-xl transition-all group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-white/5 group-hover:bg-success-neon/10 border border-white/5 group-hover:border-success-neon/20 flex items-center justify-center shrink-0">
+                  <Icon className="w-4 h-4 text-terminal-gray group-hover:text-success-neon" />
+                </div>
+                <div>
+                  <span className="font-bold block group-hover:text-success-neon">{service.name}</span>
+                  <span className="text-[10px] text-terminal-gray/80 line-clamp-1">Consultar por WhatsApp</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Main WhatsApp Button */}
       <button
