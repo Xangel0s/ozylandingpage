@@ -1,152 +1,200 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { AlertCircle, Cpu, User, CheckCircle2, MessageSquare, ShieldAlert, Sparkles } from "lucide-react";
+import { Sparkles, MessageSquare, AlertTriangle, Cpu, User, CheckCircle2, Server, Terminal } from "lucide-react";
 
-interface ChatMessage {
+interface StepMessage {
   id: number;
-  time: string;
-  sender: "system" | "ai" | "engineer" | "client";
+  sender: "client" | "ai" | "engineer" | "system";
   senderName: string;
-  content: string;
-  status?: string;
+  avatarIcon: any;
+  avatarBg: string;
+  timeLabel: string;
+  bubbleBg: string;
+  text: string;
+  hasProgress?: boolean;
+  progressText?: string;
+  statusCard?: {
+    icon: any;
+    title: string;
+    subtitle: string;
+    success: boolean;
+  };
 }
 
-const messagesList: ChatMessage[] = [
+const steps: StepMessage[] = [
   {
     id: 1,
-    time: "10:00:02",
-    sender: "system",
-    senderName: "ALERTA DE SISTEMA",
-    content: "WARNING: Latencia de carga crítica en servidor de producción (Nodos 04 y 07). CPU al 98.7%. Response Time > 4500ms.",
+    sender: "client",
+    senderName: "Nora (SRE Lead)",
+    avatarIcon: User,
+    avatarBg: "bg-zinc-800 border-zinc-700",
+    timeLabel: "Hace 1 min",
+    bubbleBg: "bg-white/5 border-white/10 text-zinc-100",
+    text: "Hola equipo, el servidor de producción (nodo-04) está extremadamente lento y registrando timeouts de base de datos.",
   },
   {
     id: 2,
-    time: "10:00:15",
     sender: "ai",
-    senderName: "OZYBASE IA DIAGNÓSTICO",
-    content: "DIAGNÓSTICO AUTOMÁTICO: Bloqueo de hilos debido a Query no indexada en módulo de reportes. Recomendación: Terminar proceso 11409 y forzar indexación de tabla 'transacciones_historico'.",
+    senderName: "Robin AI (OzyBase)",
+    avatarIcon: Sparkles,
+    avatarBg: "bg-success-neon/15 border-success-neon/30 text-success-neon",
+    timeLabel: "Hace un momento",
+    bubbleBg: "bg-success-neon/5 border-success-neon/20 text-white",
+    text: "Analizando telemetría y bloqueos activos en el nodo-04...",
+    hasProgress: true,
+    progressText: "Investigando cuellos de botella en base de datos",
   },
   {
     id: 3,
-    time: "10:01:05",
-    sender: "engineer",
-    senderName: "JULIÁN (SOPORTE L3)",
-    content: "Entendido. Ejecutando kill del proceso 11409, aplicando parche de índices a la base de datos y limpiando la memoria caché de los nodos.",
+    sender: "ai",
+    senderName: "Robin AI (OzyBase)",
+    avatarIcon: Sparkles,
+    avatarBg: "bg-success-neon/15 border-success-neon/30 text-success-neon",
+    timeLabel: "Hace un momento",
+    bubbleBg: "bg-success-neon/5 border-success-neon/20 text-white",
+    text: "Diagnóstico completo: Bloqueo de hilos debido a Query no indexada en tabla 'transacciones'. Parche de optimización listo.",
   },
   {
     id: 4,
-    time: "10:01:42",
-    sender: "system",
-    senderName: "SISTEMA RESTABLECIDO",
-    content: "STATUS: OK. Servidor operacional. Latencia normalizada a 12ms. CPU estable al 14.2%. Nodos en línea.",
-    status: "success",
+    sender: "engineer",
+    senderName: "Julián (Soporte L3)",
+    avatarIcon: User,
+    avatarBg: "bg-blue-950/40 border-blue-500/30 text-blue-400",
+    timeLabel: "Hace un momento",
+    bubbleBg: "bg-blue-950/10 border-blue-500/20 text-blue-100",
+    text: "Entendido Robin. Procedo a aplicar el parche de índices y reiniciar la caché de consultas.",
   },
   {
     id: 5,
-    time: "10:02:10",
+    sender: "ai",
+    senderName: "Robin AI (OzyBase)",
+    avatarIcon: Sparkles,
+    avatarBg: "bg-success-neon/15 border-success-neon/30 text-success-neon",
+    timeLabel: "Hace un momento",
+    bubbleBg: "bg-success-neon/5 border-success-neon/20 text-white",
+    text: "Verificación de latencia completada con éxito.",
+    statusCard: {
+      icon: Server,
+      title: "DB Nodo-04 Operacional",
+      subtitle: "Latencia: 12ms | CPU: 14%",
+      success: true,
+    },
+  },
+  {
+    id: 6,
     sender: "client",
-    senderName: "CLIENTE (SRE LEADER)",
-    content: "Excelente velocidad de respuesta y diagnóstico preciso. Incidencia resuelta en menos de 2 minutos. ¡Muchas gracias, Julián!",
+    senderName: "Nora (SRE Lead)",
+    avatarIcon: User,
+    avatarBg: "bg-zinc-800 border-zinc-700",
+    timeLabel: "Justo ahora",
+    bubbleBg: "bg-white/5 border-white/10 text-zinc-100",
+    text: "¡Perfecto! Todo reestablecido en tiempo récord. Muchas gracias por la velocidad.",
   },
 ];
 
 export default function ChatSimulator() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % (messagesList.length + 1));
+      setActiveStep((prev) => (prev >= steps.length ? 1 : prev + 1));
     }, 4500);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full bg-[#141414] border border-border-subtle rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-      {/* Top Header Bar */}
-      <div className="bg-black/60 px-6 py-4 border-b border-border-subtle flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+    <div className="w-full bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative min-h-[460px] flex flex-col justify-between">
+      {/* Background decor matrix dots */}
+      <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none opacity-40"></div>
+
+      {/* Header bar */}
+      <div className="relative z-10 px-6 py-4 bg-black/40 border-b border-white/5 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 bg-success-neon rounded-full animate-ping"></span>
-          <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">RESOLUCIÓN ACTIVA DE INCIDENTES</span>
+          <Terminal className="w-4 h-4 text-success-neon" />
+          <span className="font-mono text-xs font-bold text-white tracking-widest uppercase">Canal de Soporte Activo</span>
         </div>
-        
-        {/* Communication Channels */}
-        <div className="flex items-center gap-3 bg-[#1e1e1e] px-3 py-1.5 rounded-full border border-border-subtle/50">
-          <span className="font-mono text-[9px] text-terminal-gray uppercase">Canales:</span>
-          <div className="flex gap-2">
-            <span className="px-2 py-0.5 bg-success-neon/10 border border-success-neon/20 rounded font-mono text-[8px] text-success-neon">SLACK</span>
-            <span className="px-2 py-0.5 bg-success-neon/10 border border-success-neon/20 rounded font-mono text-[8px] text-success-neon">WSP</span>
-            <span className="px-2 py-0.5 bg-success-neon/10 border border-success-neon/20 rounded font-mono text-[8px] text-success-neon">GMAIL</span>
-            <span className="px-2 py-0.5 bg-success-neon/10 border border-success-neon/20 rounded font-mono text-[8px] text-success-neon">PANEL</span>
-          </div>
+        <div className="flex gap-2">
+          <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
+          <span className="font-mono text-[9px] text-success-neon uppercase tracking-wider">Mesa de Ayuda L3</span>
         </div>
       </div>
 
-      {/* Simulator Screen */}
-      <div className="p-6 h-[340px] md:h-[400px] overflow-y-auto space-y-4 font-mono text-xs scrollbar-thin">
-        {messagesList.slice(0, activeStep).map((msg) => {
-          let bgClass = "bg-black/40 border-border-subtle/30 text-terminal-gray";
-          let icon = <AlertCircle className="w-4 h-4 text-red-500" />;
-          let labelColor = "text-terminal-gray";
-
-          if (msg.sender === "system") {
-            if (msg.status === "success") {
-              bgClass = "bg-success-neon/5 border-success-neon/20 text-white";
-              icon = <CheckCircle2 className="w-4 h-4 text-success-neon" />;
-              labelColor = "text-success-neon";
-            } else {
-              bgClass = "bg-red-950/20 border-red-500/20 text-red-100";
-              icon = <ShieldAlert className="w-4 h-4 text-red-500" />;
-              labelColor = "text-red-400";
-            }
-          } else if (msg.sender === "ai") {
-            bgClass = "bg-success-neon/5 border-success-neon/30 text-white";
-            icon = <Cpu className="w-4 h-4 text-success-neon" />;
-            labelColor = "text-success-neon font-bold";
-          } else if (msg.sender === "engineer") {
-            bgClass = "bg-blue-950/20 border-blue-500/20 text-blue-100";
-            icon = <User className="w-4 h-4 text-blue-400" />;
-            labelColor = "text-blue-400";
-          } else if (msg.sender === "client") {
-            bgClass = "bg-zinc-900 border-zinc-800 text-zinc-300";
-            icon = <MessageSquare className="w-4 h-4 text-zinc-400" />;
-            labelColor = "text-zinc-400";
-          }
-
+      {/* Message Screen Area */}
+      <div className="relative z-10 p-6 grow space-y-5 overflow-y-auto max-h-[400px] scrollbar-none flex flex-col justify-end">
+        {steps.slice(0, activeStep).map((msg) => {
+          const AvatarIcon = msg.avatarIcon;
           return (
             <div
               key={msg.id}
-              className={`p-4 border rounded-lg transition-all duration-500 transform scale-100 opacity-100 animate-[fadeIn_0.5s_ease-out] ${bgClass}`}
+              className={`flex gap-4 max-w-[85%] items-start animate-[fadeIn_0.4s_ease-out] ${
+                msg.sender === "client" ? "self-start" : "self-end flex-row-reverse"
+              }`}
             >
-              <div className="flex justify-between items-center mb-2 border-b border-border-subtle/20 pb-1.5">
-                <div className="flex items-center gap-2">
-                  {icon}
-                  <span className={`text-[10px] font-bold tracking-wider ${labelColor}`}>{msg.senderName}</span>
-                </div>
-                <span className="text-[9px] text-terminal-gray/60">{msg.time}</span>
+              {/* Avatar */}
+              <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 shadow-md ${msg.avatarBg}`}>
+                <AvatarIcon className="w-4 h-4" />
               </div>
-              <p className="leading-relaxed text-[11px] whitespace-pre-wrap">{msg.content}</p>
+
+              {/* Speech Bubble */}
+              <div className="space-y-1">
+                <div className={`flex items-center gap-2 text-[10px] text-terminal-gray/60 ${msg.sender === "client" ? "justify-start" : "justify-end"}`}>
+                  <span className="font-bold text-white/80">{msg.senderName}</span>
+                  <span>•</span>
+                  <span>{msg.timeLabel}</span>
+                </div>
+                <div className={`p-4 rounded-2xl border text-xs leading-relaxed shadow-lg ${msg.bubbleBg}`}>
+                  <p>{msg.text}</p>
+
+                  {/* Optional loader/progress */}
+                  {msg.hasProgress && (
+                    <div className="mt-4 pt-3 border-t border-white/5 space-y-2">
+                      <div className="flex justify-between text-[9px] text-terminal-gray font-mono">
+                        <span className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 bg-success-neon rounded-full animate-ping"></span>
+                          {msg.progressText}
+                        </span>
+                        <span>PROCESANDO</span>
+                      </div>
+                      <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-full bg-success-neon w-2/3 animate-[pulse_1.5s_infinite]"></div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Optional Status Card block */}
+                  {msg.statusCard && (
+                    <div className="mt-4 p-3 bg-black/60 border border-success-neon/20 rounded-xl flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-success-neon/10 border border-success-neon/20 flex items-center justify-center">
+                        <msg.statusCard.icon className="w-5 h-5 text-success-neon" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-bold text-white">{msg.statusCard.title}</div>
+                        <div className="text-[9px] text-terminal-gray font-mono">{msg.statusCard.subtitle}</div>
+                      </div>
+                      <div className="ml-auto">
+                        <span className="text-[9px] px-2 py-0.5 bg-success-neon/15 text-success-neon border border-success-neon/20 rounded font-bold uppercase">
+                          OK
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           );
         })}
-
-        {activeStep === 0 && (
-          <div className="h-full flex flex-col items-center justify-center text-center text-terminal-gray/40 space-y-4">
-            <Sparkles className="w-8 h-8 text-success-neon/30 animate-pulse" />
-            <p className="font-mono text-xs uppercase tracking-widest">Iniciando Simulación de Canal de Soporte Activo...</p>
-          </div>
-        )}
       </div>
 
-      {/* Simulator Footer Controls */}
-      <div className="bg-black/40 px-6 py-3 border-t border-border-subtle flex justify-between items-center text-[10px] text-terminal-gray/60">
-        <span className="font-mono">SIMULATION_STATE: {activeStep === messagesList.length ? "RESOLVED" : "PROCESSING"}</span>
+      {/* Footer bar control */}
+      <div className="relative z-10 px-6 py-4 bg-black/40 border-t border-white/5 flex justify-between items-center text-[10px] text-terminal-gray/60 font-mono">
+        <span>ESTADO: {activeStep === steps.length ? "INCIDENTE_RESUELTO" : "ANALIZANDO_METRICAS"}</span>
         <button
-          onClick={() => setActiveStep(0)}
-          className="text-success-neon hover:underline font-mono uppercase"
+          onClick={() => setActiveStep(1)}
+          className="text-success-neon hover:text-white transition-colors"
         >
-          Reiniciar Flujo
+          REINICIAR SIMULACIÓN
         </button>
       </div>
     </div>
