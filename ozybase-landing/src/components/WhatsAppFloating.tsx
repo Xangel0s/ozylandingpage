@@ -49,10 +49,10 @@ export default function WhatsAppFloating() {
   };
 
   return (
-    <div className="fixed bottom-10 right-6 z-50 font-sans">
+    <div className="fixed bottom-10 right-6 z-50 font-sans flex flex-col items-end">
       {/* Services Menu Popup */}
       <div
-        className={`absolute bottom-16 right-0 w-72 bg-[#141414]/95 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-2xl space-y-3 relative z-50 transition-all duration-300 origin-bottom-right ${
+        className={`absolute bottom-20 right-0 w-72 bg-[#141414]/95 backdrop-blur border border-white/10 rounded-2xl p-4 shadow-2xl space-y-3 z-50 transition-all duration-300 origin-bottom-right ${
           isOpen
             ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
             : "opacity-0 scale-90 translate-y-4 pointer-events-none"
