@@ -26,7 +26,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle rounded-full justify-center">
             <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
             <span className="font-mono text-xs text-success-neon uppercase tracking-widest">
-              Autonomous Core Active v2.5
+              Optimiza tu negocio
             </span>
           </div>
 
