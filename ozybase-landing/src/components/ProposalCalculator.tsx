@@ -280,6 +280,14 @@ export default function ProposalCalculator() {
                 </div>
               </div>
 
+              {/* Conditionally Render: Support Type note for Sede Física / Híbrido */}
+              {(supportType === "fisico" || supportType === "hibrido") && (
+                <div className="p-4 bg-success-neon/5 border border-success-neon/20 rounded-xl text-[10px] text-terminal-gray/90 leading-relaxed animate-[fadeIn_0.3s_ease-out]">
+                  <strong className="text-success-neon uppercase tracking-wider block mb-1">Nota sobre Cobertura Física:</strong>
+                  Esta cotización estimada está calculada para un plan mensual con facturación anual corporativa. Las tarifas finales pueden variar por lugar de ubicación geográfica (ej. si es tienda física retail con viáticos adicionales) o si prefiere un esquema basado en visitas técnicas coordinadas.
+                </div>
+              )}
+
               {/* Sedes / Oficinas (Condicional) */}
               {(supportType === "fisico" || supportType === "hibrido") && (
                 <div className="space-y-2 animate-[fadeIn_0.3s_ease-out]">
