@@ -56,44 +56,40 @@ export default function ProposalCalculator() {
     reader.readAsText(file);
   };
 
-  // Calculate pricing in Peruvian Soles (S/.)
-  const calculatePrice = () => {
-    let basePrice = 0;
-    if (supportType === "fisico") basePrice = 450;
-    else if (supportType === "sistemas") basePrice = 650;
-    else basePrice = 950; // Híbrido
+  const handleSendWhatsApp = () => {
+    const phone = "51905948996";
+    const supportLabel = supportType === "fisico" 
+      ? "Soporte Físico & Redes (Oficinas/Sede)" 
+      : supportType === "sistemas" 
+      ? "Soporte de Sistemas & Cloud (Servidores)" 
+      : "Soporte Híbrido Completo (Sedes y Nube)";
+    
+    const slaLabel = sla === "estandar"
+      ? "Estándar (< 15 min - Horario Laboral)"
+      : sla === "avanzado"
+      ? "Avanzado (< 15 min - Slack Dedicado)"
+      : "Crítico L3 (< 15 min - Soporte 24/7/365)";
+      
+    const backupLabel = includeBackup ? `Sí, capacidad de ${backupTBs} TB` : "No incluido";
+    const sedesLabel = (supportType === "fisico" || supportType === "hibrido") ? `${numSedes} Sedes` : "No aplica (100% Remoto)";
+    const inventarioLabel = uploadedFileName ? `Sí, archivo de inventario: ${uploadedFileName} (${deviceDetectedCount || infraSize} equipos)` : "No cargado";
 
-    let sizeMultiplier = 1;
-    if (infraSize > 25) sizeMultiplier = 2.5;
-    else if (infraSize > 10) sizeMultiplier = 1.8;
-    else if (infraSize > 5) sizeMultiplier = 1.3;
+    const message = `Hola OzyBase, me gustaría solicitar una propuesta técnica y cotización formal de soporte para mi empresa. Aquí están los detalles de nuestra infraestructura:
 
-    let slaMultiplier = 1;
-    if (sla === "avanzado") slaMultiplier = 1.4;
-    if (sla === "critico") slaMultiplier = 2.2;
+*Detalles de Requerimiento:*
+• *Tipo de Soporte:* ${supportLabel}
+• *Sedes/Oficinas:* ${sedesLabel}
+• *Equipos/Servidores:* ${infraSize} dispositivos
+• *Nivel de Servicio (SLA):* ${slaLabel}
+• *Backup Automatizado:* ${backupLabel}
+• *Inventario Adjunto:* ${inventarioLabel}
 
-    let total = basePrice * sizeMultiplier * slaMultiplier;
+Quedo a la espera de que un ejecutivo de ventas revise esta configuración para enviarme la propuesta técnica y económica formalizada.`;
 
-    // Internal travel cost (not displayed directly to keep panel clean)
-    // Travel ticket base = S/. 1.5, 4 visits per month, 2-way travel per visit.
-    if (supportType === "fisico" || supportType === "hibrido") {
-      const travelBaseTicket = 1.5;
-      const visitsPerSede = 4;
-      const travelsPerVisit = 2;
-      const internalTravelCost = numSedes * visitsPerSede * travelsPerVisit * travelBaseTicket; // numSedes * 12 Soles
-      total += internalTravelCost;
-    }
-
-    // Backup cost
-    if (includeBackup) {
-      const costPerTB = 120; // S/. 120 per TB
-      total += backupTBs * costPerTB;
-    }
-
-    return Math.round(total);
+    const encodedText = encodeURIComponent(message);
+    const url = `https://wa.me/${phone}?text=${encodedText}`;
+    window.open(url, "_blank");
   };
-
-  const currentPrice = calculatePrice();
 
   const handlePrint = () => {
     const printWindow = window.open("", "_blank");
@@ -102,7 +98,7 @@ export default function ProposalCalculator() {
     const htmlContent = `
       <html>
         <head>
-          <title>Propuesta de Soporte Técnico - OzyBase</title>
+          <title>Requerimientos de Soporte Técnico - OzyBase</title>
           <style>
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #111; padding: 40px; line-height: 1.6; }
             .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #D2F20B; padding-bottom: 20px; margin-bottom: 30px; }
@@ -115,8 +111,7 @@ export default function ProposalCalculator() {
             table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
             th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; font-size: 13px; }
             th { background: #f9f9f9; font-weight: bold; }
-            .price-box { background: #fcfdfe; border: 1px solid #ddd; padding: 20px; text-align: right; border-radius: 6px; margin-top: 30px; }
-            .price-box .val { font-size: 28px; font-weight: bold; color: #000; }
+            .price-box { background: #fafdf5; border: 1px solid #D2F20B; padding: 20px; text-align: center; border-radius: 6px; margin-top: 30px; }
             .footer { margin-top: 50px; font-size: 10px; color: #777; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
             @media print {
               body { padding: 0; }
@@ -135,7 +130,7 @@ export default function ProposalCalculator() {
           </div>
 
           <div class="section">
-            <h1>Propuesta Técnica y Económica</h1>
+            <h1>Resumen de Especificaciones Técnicas</h1>
             <p>Preparado especialmente para evaluar el soporte de infraestructura, sedes y sistemas de su organización.</p>
           </div>
 
@@ -203,9 +198,8 @@ export default function ProposalCalculator() {
           </div>
 
           <div class="price-box">
-            <div>Monto Mensual Estimado:</div>
-            <div class="val">S/. ${currentPrice.toLocaleString("es-PE")} + IGV</div>
-            <div style="font-size: 11px; color: #555; margin-top: 5px;">* Estimación basada en facturación mensual con compromiso anual. Sujeto a variaciones por ubicación geográfica (ej. tiendas físicas retail) o si se coordina un esquema de visitas técnicas puntuales.</div>
+            <div style="font-size: 13px; font-weight: bold; color: #000; text-transform: uppercase; margin-bottom: 5px;">Propuesta Sujeta a Cotización Comercial</div>
+            <div style="font-size: 11px; color: #555;">Este documento resume las especificaciones técnicas requeridas. Un ejecutivo de OzyBase adjuntará la cotización económica personalizada según su ubicación física (ej. tiendas retail) o si se coordina un esquema de visitas técnicas puntuales.</div>
           </div>
 
           <div class="footer">
@@ -393,47 +387,48 @@ export default function ProposalCalculator() {
           <div className="lg:col-span-5 flex flex-col justify-center space-y-6 lg:pl-6">
             <div className="space-y-4">
               <h3 className="font-headline text-2xl font-bold text-white leading-snug">
-                Autoservicio: Obtenga una propuesta de soporte en minutos.
+                Autoservicio: Obtenga su propuesta técnica al instante.
               </h3>
               <p className="text-sm text-terminal-gray leading-relaxed">
-                Complete las especificaciones técnicas en el panel de la izquierda, verifique el presupuesto mensual y descargue la propuesta comercial formalizada con el logotipo de OzyBase de manera inmediata.
+                Configure las especificaciones técnicas de su infraestructura en el panel de la izquierda, adjunte su inventario de equipos y envíe la propuesta directamente a nuestro equipo de ventas a través de WhatsApp.
               </p>
             </div>
 
-            <div className="space-y-2 border-y border-border-subtle/40 py-6">
+            <div className="space-y-3 border-y border-border-subtle/40 py-6">
               <span className="font-mono text-[10px] text-success-neon uppercase tracking-wider block">
-                Estimación de Inversión Mensual
+                Proceso de Cotización
               </span>
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-extrabold text-white">S/. {currentPrice.toLocaleString("es-PE")}</span>
-                <span className="text-xs text-terminal-gray">+ IGV / mes</span>
-              </div>
-              <p className="text-[10px] text-terminal-gray/80 leading-relaxed mt-3">
-                * Nota: Esta cotización estimada está calculada para un plan mensual con facturación anual corporativa. Las tarifas finales pueden variar por lugar de ubicación geográfica (ej. si es tienda física retail con viáticos adicionales) o si prefiere un esquema basado en visitas técnicas coordinadas.
-              </p>
+              <ul className="space-y-2 text-xs text-terminal-gray list-decimal list-inside leading-relaxed">
+                <li>Configure el planificador según sus necesidades.</li>
+                <li>Haga clic en <strong className="text-white">Enviar por WhatsApp</strong> para derivar su caso a un ejecutivo de ventas.</li>
+                <li>Un agente revisará la viabilidad (incluyendo tarifas específicas para tiendas físicas) y le enviará la cotización económica formal.</li>
+              </ul>
             </div>
 
             <div className="space-y-2">
               <span className="text-xs font-semibold text-white block">Ideal para:</span>
               <p className="text-xs text-terminal-gray leading-relaxed">
-                Directores de TI, administradores de sistemas y gerentes de operaciones que buscan automatizar y asegurar el soporte de sus oficinas y nubes sin demoras de contratación ni llamadas innecesarias.
+                Directores de TI y administradores de operaciones que necesitan presupuestar de forma rápida, segura y directa, sin burocracia ni intermediarios.
               </p>
             </div>
 
             <div className="space-y-4 pt-4">
               <button
-                onClick={handlePrint}
+                onClick={handleSendWhatsApp}
                 className="w-full py-4 bg-[#D2F20B] hover:bg-[#c0de0a] text-black font-mono text-xs font-bold rounded-lg uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
               >
-                <FileText className="w-4 h-4" />
-                Descargar Propuesta PDF
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Enviar Requerimientos por WhatsApp
               </button>
-              <a
-                href={`/contacto?servicio=Soporte+Técnico&monto=S/.+${currentPrice}&tipo=${supportType}`}
-                className="block text-center w-full py-4 border border-border-subtle text-white hover:border-[#D2F20B] hover:text-[#D2F20B] font-mono text-xs font-bold rounded-lg uppercase transition-all"
+              <button
+                onClick={handlePrint}
+                className="w-full py-4 border border-border-subtle text-white hover:border-[#D2F20B] hover:text-[#D2F20B] font-mono text-xs font-bold rounded-lg uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
               >
-                Agendar Demostración con Especialista
-              </a>
+                <FileText className="w-4 h-4" />
+                Descargar Resumen Técnico PDF
+              </button>
             </div>
           </div>
         </div>
