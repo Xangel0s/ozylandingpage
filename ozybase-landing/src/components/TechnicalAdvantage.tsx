@@ -8,19 +8,19 @@ const diagnostics = [
   {
     question: "¿Tu empresa experimenta caídas constantes en sus plataformas o internet?",
     icon: Wifi,
-    recommendation: "El tiempo de inactividad frena tu productividad. Recomendamos implementar sistemas Multi-WAN con balanceo de carga y doble proveedor, junto con una auditoría integral del cableado estructurado y segmentación lógica mediante VLANs para erradicar las desconexiones.",
+    recommendation: "Nuestros ingenieros realizarán una auditoría física y lógica de tu red, implementarán balanceadores de carga Multi-WAN con doble proveedor y segmentarán tu tráfico para garantizar una conexión estable y sin caídas.",
     badge: "Conectividad"
   },
   {
     question: "¿Cuentas con respaldos automatizados e inmunes ante pérdida accidental o de hardware?",
     icon: Database,
-    recommendation: "Un disco dañado o un corte de energía no deben detener tu operación. Estructuramos políticas de respaldo automatizado (estrategia 3-2-1) con almacenamiento incremental cifrado, replicación en frío local y nube de alta redundancia.",
+    recommendation: "Nuestro equipo técnico diseñará e implementará una política de backup 3-2-1 automatizada. Nos encargamos de la configuración de respaldos incrementales cifrados y de la replicación segura en la nube para asegurar que nunca pierdas información crítica.",
     badge: "Seguridad de Datos"
   },
   {
     question: "¿Qué sucedería ante un ataque de Ransomware en tu servidor principal?",
     icon: ShieldAlert,
-    recommendation: "El secuestro de datos bloquea completamente tu negocio. Blindamos tu infraestructura configurando políticas Zero-Trust, firewalls de próxima generación (NGFW), control estricto de accesos y copias de seguridad inmutables inmunes al cifrado malicioso.",
+    recommendation: "Especialistas de OzyBase blindarán tus servidores con firewalls NGFW avanzados y políticas Zero-Trust, configurando defensas proactivas y backups inmutables que garantizan la continuidad de tu negocio ante cualquier ataque.",
     badge: "Ciberseguridad"
   }
 ];
@@ -68,18 +68,18 @@ export default function TechnicalAdvantage() {
     <section className="py-24 px-6 md:px-16 bg-[#0c0c0c] border-y border-border-subtle">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-16 text-center max-w-3xl mx-auto space-y-4">
-          <span className="font-mono text-xs text-success-neon uppercase tracking-widest block reveal-left">
+          <span className="font-mono text-xs text-success-neon uppercase tracking-widest block">
             Métricas de Infraestructura
           </span>
-          <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight reveal-left">
+          <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
             Excelencia Operativa en Tiempo Real
           </h2>
-          <p className="text-terminal-gray text-base md:text-lg reveal-right">
+          <p className="text-terminal-gray text-base md:text-lg">
             Monitoreamos y optimizamos constantemente los indicadores clave de rendimiento para garantizar la disponibilidad absoluta de tu ecosistema tecnológico.
           </p>
         </div>        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {/* Service Level Standards */}
-          <div className="glass-card rounded-xl p-8 col-span-1 md:col-span-2 relative overflow-hidden flex flex-col justify-between reveal-left">
+          <div className="glass-card rounded-xl p-8 col-span-1 md:col-span-2 relative overflow-hidden flex flex-col justify-between">
             <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-success-neon to-transparent"></div>
             <h3 className="font-mono text-xs text-success-neon uppercase tracking-widest mb-8">
               Service Level Standards
@@ -131,7 +131,7 @@ export default function TechnicalAdvantage() {
           </div>
 
           {/* Key Advantages Summary */}
-          <div className="glass-card rounded-xl p-8 flex flex-col justify-between border border-border-subtle reveal-right">
+          <div className="glass-card rounded-xl p-8 flex flex-col justify-between border border-border-subtle">
             <div className="space-y-6">
               <h4 className="font-mono text-xs text-success-neon uppercase tracking-widest">
                 Monitoreo con IA Pro
@@ -222,7 +222,7 @@ export default function TechnicalAdvantage() {
         </div>
 
         {/* Custom custom layout decoration */}
-        <div className="mt-8 bg-linear-to-br from-[#141414] to-[#1a1c0d] border border-[#2a2f10] p-8 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8 scroll-reveal">
+        <div className="mt-8 bg-linear-to-br from-[#141414] to-[#1a1c0d] border border-[#2a2f10] p-8 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="space-y-4">
             <div className="w-10 h-10 rounded bg-success-neon text-black flex items-center justify-center">
               <Bolt className="w-5 h-5" />
