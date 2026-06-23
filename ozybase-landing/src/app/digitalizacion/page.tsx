@@ -68,15 +68,15 @@ export default function Digitalizacion() {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"></div>
                 {/* Overlay UI elements */}
-                <div className="absolute top-4 left-4 bg-black/85 backdrop-blur p-4 border border-border-subtle rounded-lg max-w-[220px]">
+                <div className="absolute top-4 left-4 bg-black/85 backdrop-blur p-4 border border-border-subtle rounded-lg max-w-[250px]">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
-                    <span className="font-mono text-[10px] text-success-neon font-bold">DATA_MIGRATION_ACTIVE</span>
+                    <span className="font-mono text-[10px] text-success-neon font-bold">DEMO_FLUJO_TRABAJO</span>
                   </div>
                   <div className="h-1.5 w-full bg-border-subtle rounded-full mb-1 overflow-hidden">
                     <div className="h-full w-3/4 bg-success-neon"></div>
                   </div>
-                  <p className="font-mono text-[9px] text-terminal-gray uppercase">Compiling legacy data...</p>
+                  <p className="font-mono text-[9px] text-terminal-gray uppercase">Video referencia del flujo de trabajo de digitalización</p>
                 </div>
               </div>
             </div>
