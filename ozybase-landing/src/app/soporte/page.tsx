@@ -3,7 +3,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import ChatSimulator from "@/components/ChatSimulator";
-import { Server, TrendingUp, ShieldAlert, ArrowRight, Bolt, BookOpen, Shield, CheckCircle } from "lucide-react";
+import ProposalCalculator from "@/components/ProposalCalculator";
+import { Server, TrendingUp, ShieldAlert, ArrowRight, Bolt, BookOpen, Shield, CheckCircle, Monitor, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Soporte Técnico Profesional 24/7 | OzyBase",
@@ -79,42 +80,42 @@ export default function Soporte() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* grandes empresas */}
+              {/* Soporte Fisico */}
               <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden reveal-left">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                <Server className="text-success-neon w-9 h-9" />
+                <Monitor className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-xl md:text-2xl font-bold text-white">
-                  Grandes Empresas
+                  Soporte Físico & Redes
                 </h3>
                 <p className="text-terminal-gray text-sm md:text-base leading-relaxed">
-                  Soporte dedicado Tier 3 con ingenieros asignados 24/7. Gestión de data centers, auditorías de seguridad y optimización de infraestructura global.
+                  Mantenimiento preventivo y correctivo presencial en tu sede. Configuración de cableado estructurado, enrutadores Wi-Fi/LAN, telefonía y estaciones de trabajo locales.
                 </p>
                 <ul className="space-y-3 pt-4">
                   <li className="flex items-center gap-3 font-mono text-xs text-white">
-                    <CheckCircle className="text-success-neon w-4 h-4" /> SLA de 15 minutos
+                    <CheckCircle className="text-success-neon w-4 h-4" /> Diagnóstico presencial de PCs
                   </li>
                   <li className="flex items-center gap-3 font-mono text-xs text-white">
-                    <CheckCircle className="text-success-neon w-4 h-4" /> Gestión de Desastres
+                    <CheckCircle className="text-success-neon w-4 h-4" /> Configuración de Seguridad Local
                   </li>
                 </ul>
               </div>
 
-              {/* pymes */}
+              {/* Soporte Sistemas */}
               <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden scroll-reveal">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                <TrendingUp className="text-success-neon w-9 h-9" />
+                <Server className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-xl md:text-2xl font-bold text-white">
-                  PyMEs
+                  Sistemas para Empresas
                 </h3>
                 <p className="text-terminal-gray text-sm md:text-base leading-relaxed">
-                  Soporte ágil para hardware y software. Mantenimiento preventivo, soporte remoto instantáneo y despliegue de estaciones de trabajo optimizadas.
+                  Administración avanzada de servidores nubes (AWS/GCP/Azure). Monitoreo proactivo de estabilidad, administración de bases de datos y copias de seguridad automatizadas.
                 </p>
                 <ul className="space-y-3 pt-4">
                   <li className="flex items-center gap-3 font-mono text-xs text-white">
-                    <CheckCircle className="text-success-neon w-4 h-4" /> Soporte Multi-Plataforma
+                    <CheckCircle className="text-success-neon w-4 h-4" /> Alta disponibilidad y Uptime 24/7
                   </li>
                   <li className="flex items-center gap-3 font-mono text-xs text-white">
-                    <CheckCircle className="text-success-neon w-4 h-4" /> Gestión de Licenciamiento
+                    <CheckCircle className="text-success-neon w-4 h-4" /> Backups automáticos en la nube
                   </li>
                 </ul>
               </div>
@@ -122,19 +123,19 @@ export default function Soporte() {
               {/* soluciones integrales */}
               <div className="group bg-[#141414] border border-border-subtle p-8 space-y-6 hover:border-success-neon/30 transition-all relative overflow-hidden reveal-right">
                 <div className="absolute top-0 left-0 w-full h-1 bg-success-neon transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                <ShieldAlert className="text-success-neon w-9 h-9" />
+                <ShieldCheck className="text-success-neon w-9 h-9" />
                 <h3 className="font-headline text-xl md:text-2xl font-bold text-white">
                   Soluciones Integrales
                 </h3>
                 <p className="text-terminal-gray text-sm md:text-base leading-relaxed">
-                  Cobertura full-stack desde el hardware base hasta la capa de aplicación. Outsourcing tecnológico completo para externalizar su departamento IT.
+                  Outsourcing de TI completo y consultoría técnica a medida. Nos convertimos en tu departamento de tecnología para garantizar seguridad, escalabilidad y compras inteligentes de hardware.
                 </p>
                 <ul className="space-y-3 pt-4">
                   <li className="flex items-center gap-3 font-mono text-xs text-white">
-                    <CheckCircle className="text-success-neon w-4 h-4" /> Auditoría DevOps 360
+                    <CheckCircle className="text-success-neon w-4 h-4" /> Auditorías de Ciberseguridad
                   </li>
                   <li className="flex items-center gap-3 font-mono text-xs text-white">
-                    <CheckCircle className="text-success-neon w-4 h-4" /> Infraestructura como Código
+                    <CheckCircle className="text-success-neon w-4 h-4" /> Consultoría estratégica de TI
                   </li>
                 </ul>
               </div>
@@ -165,113 +166,7 @@ export default function Soporte() {
          </div>
 
          {/* Preformero de Soporte */}
-         <section className="py-24 bg-black border-t border-border-subtle">
-           <div className="max-w-[1280px] mx-auto px-6 md:px-16">
-             <div className="text-center mb-16 space-y-4">
-               <span className="font-mono text-xs text-success-neon uppercase tracking-widest block">
-                 Cotización de Servicio
-               </span>
-               <h2 className="font-headline text-3xl md:text-4.5xl font-bold text-white tracking-tight">
-                 Preformero de Propuesta Técnica
-               </h2>
-               <p className="text-terminal-gray text-base md:text-lg max-w-2xl mx-auto">
-                 Estructura de costos y alcances formalizada para tu departamento de IT. Selecciona el acuerdo de nivel de servicio (SLA) requerido.
-               </p>
-             </div>
-
-             {/* Proposal Sheet Layout */}
-             <div className="bg-[#141414] border border-border-subtle rounded-xl overflow-hidden shadow-2xl max-w-5xl mx-auto">
-               {/* Proposal Header */}
-               <div className="p-8 border-b border-border-subtle bg-black/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                 <div>
-                   <div className="text-white font-headline text-xl font-bold">OZYBASE INFRASTRUCTURE SERVICES</div>
-                   <div className="text-terminal-gray font-mono text-xs mt-1">Nº PROPUESTA: PROP-2026-SOP404</div>
-                 </div>
-                 <div className="text-right font-mono text-xs text-terminal-gray space-y-1">
-                   <div>EMISIÓN: 2026-06-23</div>
-                   <div>VALIDEZ: 30 DÍAS</div>
-                   <div className="text-success-neon font-bold">SLA RESPUESTA GARANTIZADA</div>
-                 </div>
-               </div>
-
-               {/* Proposal Table */}
-               <div className="overflow-x-auto">
-                 <table className="w-full text-left font-mono text-xs text-white border-collapse">
-                   <thead>
-                     <tr className="border-b border-border-subtle bg-[#1e1e1e] text-terminal-gray uppercase text-[10px] tracking-wider">
-                       <th className="p-6">Especificación del Servicio</th>
-                       <th className="p-6">Soporte Pymes</th>
-                       <th className="p-6">Soporte Avanzado</th>
-                       <th className="p-6 text-success-neon">Soporte Enterprise (L3)</th>
-                     </tr>
-                   </thead>
-                   <tbody className="divide-y divide-border-subtle/50">
-                     <tr>
-                       <td className="p-6 font-bold text-white">Tiempo de Respuesta (SLA)</td>
-                       <td className="p-6 text-terminal-gray">Siguiente día hábil</td>
-                       <td className="p-6 text-terminal-gray">Menos de 2 horas</td>
-                       <td className="p-6 text-success-neon font-bold">Menos de 15 minutos</td>
-                     </tr>
-                     <tr>
-                       <td className="p-6 font-bold text-white">Canales de Comunicación</td>
-                       <td className="p-6 text-terminal-gray">Email & Web Panel</td>
-                       <td className="p-6 text-terminal-gray">Slack Dedicado & Email</td>
-                       <td className="p-6 text-white">Slack, WhatsApp, Gmail, Teléfono Directo</td>
-                     </tr>
-                     <tr>
-                       <td className="p-6 font-bold text-white">Ingenieros Asignados</td>
-                       <td className="p-6 text-terminal-gray">Equipo general (L1/L2)</td>
-                       <td className="p-6 text-terminal-gray">Pool asignado (L2)</td>
-                       <td className="p-6 text-white">Ingeniero L3 Dedicado Asignado</td>
-                     </tr>
-                     <tr>
-                       <td className="p-6 font-bold text-white">Monitoreo de Infraestructura</td>
-                       <td className="p-6 text-terminal-gray">Reactivo (Reporte de cliente)</td>
-                       <td className="p-6 text-terminal-gray">Proactivo básico (Logs)</td>
-                       <td className="p-6 text-white">Diagnóstico Autónomo por IA 24/7</td>
-                     </tr>
-                     <tr>
-                       <td className="p-6 font-bold text-white">Auditorías de Seguridad</td>
-                       <td className="p-6 text-terminal-gray">No incluido</td>
-                       <td className="p-6 text-terminal-gray">Mensual</td>
-                       <td className="p-6 text-white">Continua en tiempo real</td>
-                     </tr>
-                     <tr className="bg-[#1e1e1e]/20">
-                       <td className="p-6 font-bold text-white">Valor Estimado de Inversión</td>
-                       <td className="p-6">
-                         <span className="text-white font-bold text-sm">Desde $299</span>
-                         <span className="text-terminal-gray text-[10px] block">/ mes</span>
-                       </td>
-                       <td className="p-6">
-                         <span className="text-white font-bold text-sm">Desde $899</span>
-                         <span className="text-terminal-gray text-[10px] block">/ mes</span>
-                       </td>
-                       <td className="p-6">
-                         <span className="text-success-neon font-bold text-sm">Desde $1,899</span>
-                         <span className="text-terminal-gray text-[10px] block">/ mes</span>
-                       </td>
-                     </tr>
-                   </tbody>
-                 </table>
-               </div>
-
-               {/* Proposal Actions */}
-               <div className="p-8 border-t border-border-subtle bg-black/40 flex flex-col sm:flex-row justify-between items-center gap-6">
-                 <div className="text-terminal-gray font-mono text-[10px] max-w-md leading-relaxed text-center sm:text-left">
-                   NOTA: Todos los presupuestos son aproximados y ajustados según la cantidad de servidores activos y la complejidad del pipeline de DevOps.
-                 </div>
-                 <div className="flex gap-4 w-full sm:w-auto">
-                   <a
-                     href="/contacto?servicio=Soporte+Técnico"
-                     className="w-full sm:w-auto px-8 py-4 border border-success-neon bg-success-neon text-black font-mono text-xs font-bold rounded hover:bg-transparent hover:text-success-neon text-center uppercase transition-all"
-                   >
-                     Obtener Propuesta en PDF
-                   </a>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </section>
+         <ProposalCalculator />
 
         {/* Security & Commitment Section */}
         <section className="py-24 bg-[#0a0a0a]">
