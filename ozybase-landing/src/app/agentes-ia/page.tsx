@@ -36,7 +36,7 @@ export default function AgentesIa() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-success-neon/5 blur-[100px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
           <div className="relative z-10 max-w-[1280px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-8">
+            <div className="lg:col-span-6 space-y-8">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#141414] border border-border-subtle text-success-neon font-mono text-xs rounded-full reveal-left">
                 <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
                 AGENTES IA AUTÓNOMOS
@@ -58,9 +58,23 @@ export default function AgentesIa() {
               </div>
             </div>
 
-            {/* Simulated Live Terminal */}
-            <div className="lg:col-span-5 w-full">
-              <TerminalLogs />
+            {/* Video Widget */}
+            <div className="lg:col-span-6 relative h-[350px] lg:h-[450px] w-full">
+              <div className="w-full h-full rounded-xl border border-border-subtle bg-[#141414] overflow-hidden relative group">
+                <video
+                  src="/Videos/Videos-contenido/video-agente-IA.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity filter grayscale"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"></div>
+                {/* Overlay UI elements */}
+                <div className="absolute top-4 left-4 bg-black/85 backdrop-blur p-4 border border-border-subtle rounded-lg max-w-[250px]">
+                  <p className="font-mono text-[9px] text-terminal-gray uppercase">Video referencia del flujo de trabajo de agentes de IA</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -90,7 +104,7 @@ export default function AgentesIa() {
                 </div>
                 <h4 className="font-headline text-xl font-bold text-white mb-4">Monitoreo Autónomo</h4>
                 <p className="text-terminal-gray text-sm md:text-base mb-8 grow">
-                  Sistemas de detección proactiva 24/7. Cada paquete y cambio de estado es analizado por modelos de regresión no lineal en tiempo real.
+                  Sistemas de detección proactiva 24/7. Cada paquete y cambio de estado es analizado by modelos de regresión no lineal en tiempo real.
                 </p>
                 <ul className="space-y-3 font-mono text-xs text-white">
                   <li className="flex items-center gap-2">
@@ -152,20 +166,13 @@ export default function AgentesIa() {
         {/* Technical Reliability Section */}
         <section className="py-24 overflow-hidden bg-black border-t border-border-subtle">
           <div className="max-w-[1280px] mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-            <div className="relative order-2 md:order-1 flex justify-center reveal-left w-full">
-              <div className="w-full h-[350px] lg:h-[450px] rounded-xl border border-border-subtle bg-[#141414] overflow-hidden relative group">
-                <video
-                  src="/Videos/Videos-contenido/video-agente-IA.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-luminosity filter grayscale"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent"></div>
-                {/* Overlay UI elements */}
-                <div className="absolute top-4 left-4 bg-black/85 backdrop-blur p-4 border border-border-subtle rounded-lg max-w-[250px]">
-                  <p className="font-mono text-[9px] text-terminal-gray uppercase">Video referencia del flujo de trabajo de agentes de IA</p>
+            <div className="relative order-2 md:order-1 flex justify-center reveal-left">
+              <div className="w-full max-w-sm aspect-square bg-[#141414] rounded-xl border border-border-subtle overflow-hidden flex items-center justify-center relative">
+                <div className="absolute inset-0 matrix-grid opacity-15"></div>
+                <div className="z-10 text-center p-8">
+                  <div className="text-[80px] font-extrabold text-success-neon opacity-10 leading-none mb-4 font-mono">99.99%</div>
+                  <h4 className="font-headline text-xl font-bold text-white mb-2">Confiabilidad Extrema</h4>
+                  <p className="text-terminal-gray text-sm font-sans">Nuestra infraestructura core es descentralizada. Si un agente cae, diez más se sincronizan para cubrir la brecha.</p>
                 </div>
               </div>
             </div>
