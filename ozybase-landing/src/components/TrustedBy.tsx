@@ -2,13 +2,13 @@ import { Database } from "lucide-react";
 
 export default function TrustedBy() {
   const logos = [
-    { name: "Edvio", src: "/Logos/Edvio.png" },
-    { name: "Lima Green", src: "/Logos/Lima green.png" },
-    { name: "Elifyr", src: "/Logos/elifyr.png" },
-    { name: "La Casa de la Construcción", src: "/Logos/lacasadelaconstruccion.png" },
-    { name: "Edvio", src: "/Logos/Edvio.png" },
-    { name: "Lima Green", src: "/Logos/Lima green.png" },
-    { name: "Elifyr", src: "/Logos/elifyr.png" },
+    { name: "Edvio", src: "/Logos/Edvio.png", className: "h-12 max-w-[220px]" },
+    { name: "Lima Green", src: "/Logos/Lima green.png", className: "h-[68px] max-w-[220px]" },
+    { name: "Elifyr", src: "/Logos/elifyr.png", className: "h-[68px] max-w-[220px]" },
+    { name: "La Casa de la Construcción", src: "/Logos/lacasadelaconstruccion.png", className: "h-[76px] max-w-[220px]" },
+    { name: "Edvio", src: "/Logos/Edvio.png", className: "h-12 max-w-[220px]" },
+    { name: "Lima Green", src: "/Logos/Lima green.png", className: "h-[68px] max-w-[220px]" },
+    { name: "Elifyr", src: "/Logos/elifyr.png", className: "h-[68px] max-w-[220px]" },
   ];
 
   return (
@@ -29,7 +29,7 @@ export default function TrustedBy() {
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-16 max-w-[220px] object-contain"
+                className={`${logo.className} object-contain`}
               />
             </div>
           ))}
@@ -42,7 +42,7 @@ export default function TrustedBy() {
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-16 max-w-[220px] object-contain"
+                className={`${logo.className} object-contain`}
               />
             </div>
           ))}
