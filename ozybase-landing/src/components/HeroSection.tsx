@@ -23,22 +23,22 @@ export default function HeroSection() {
 
       <div className="relative z-10 px-6 md:px-16 max-w-4xl mx-auto w-full text-center space-y-8">
         <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle rounded-full justify-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle rounded-full justify-center animate-init-left">
             <span className="w-2 h-2 rounded-full bg-success-neon animate-pulse"></span>
             <span className="font-mono text-xs text-success-neon uppercase tracking-widest">
               Optimiza tu negocio
             </span>
           </div>
 
-          <h1 className="font-headline text-5xl md:text-6.5xl font-extrabold text-white leading-tight">
+          <h1 className="font-headline text-5xl md:text-6.5xl font-extrabold text-white leading-tight animate-init-left [animation-delay:200ms]">
             Expertos en <span className="text-success-neon block mt-1">Soporte Técnico y Automatización con IA</span>
           </h1>
 
-          <p className="text-terminal-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-sans">
+          <p className="text-terminal-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-sans animate-init-right [animation-delay:400ms]">
             Elevamos la productividad de tu empresa mediante soporte especializado 24/7 y agentes de IA inteligentes diseñados para optimizar tu infraestructura sin intervención manual.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center pt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center pt-4 animate-init-converge [animation-delay:600ms]">
             <a
               href="#contacto"
               className="w-full sm:w-auto border border-success-neon bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-transparent hover:text-success-neon transition-all flex items-center justify-center gap-2 group"
