@@ -8,15 +8,16 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "OzyBase | Soporte Técnico de TI, Agentes de IA y Digitalización para Empresas",
-  description: "Optimice su infraestructura digital con soporte de sistemas 24/7, agentes autónomos de IA y migración de procesos de Excel a la nube. Evite caídas y acelere sus operaciones.",
+  title: "OzyBase | Soporte Técnico de TI en Lima y Perú, Agentes de IA y Digitalización",
+  description: "Soporte de sistemas híbrido, presencial y remoto en Lima y todo el Perú. Especialistas en automatización, seguridad garantizada y backups en la nube para empresas.",
   keywords: [
-    "Soporte técnico para empresas",
-    "Soporte TI 24/7",
-    "Agentes de IA autónomos",
-    "Digitalización de procesos",
-    "Monitoreo de servidores",
-    "Outsourcing tecnológico"
+    "Soporte técnico en Lima",
+    "Soporte de TI Perú",
+    "Soporte de sistemas Comas",
+    "Especialista de TI presencial y remoto",
+    "Backups de seguridad garantizada",
+    "Soporte híbrido para empresas",
+    "Outsourcing TI Lima"
   ],
   alternates: {
     canonical: "https://ozybase.com",

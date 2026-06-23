@@ -7,15 +7,17 @@ import ProposalCalculator from "@/components/ProposalCalculator";
 import { Server, TrendingUp, ShieldAlert, ArrowRight, Bolt, BookOpen, Shield, CheckCircle, Monitor, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Soporte Técnico de TI y Mantenimiento de Sistemas 24/7",
-  description: "Servicio de soporte técnico y administración de sistemas 24/7 para empresas. Cobertura presencial y cloud gestionado con ingenieros calificados Nivel 3.",
+  title: "Soporte Técnico de TI Presencial y Remoto | Lima, Perú",
+  description: "Servicio especialista de soporte técnico de TI híbrido, presencial y remoto para empresas en Lima, Comas y todo el Perú. Seguridad garantizada con backups automáticos.",
   keywords: [
-    "Soporte técnico TI",
-    "Soporte de sistemas 24/7",
-    "Outsourcing de TI",
-    "Mantenimiento de servidores",
-    "Soporte técnico presencial",
-    "Administración de servidores cloud"
+    "Soporte técnico presencial Lima",
+    "Soporte técnico remoto Perú",
+    "Soporte de sistemas en Comas",
+    "Soporte TI híbrido",
+    "Especialista de sistemas Lima",
+    "Backups de seguridad garantizada",
+    "Mantenimiento de computadoras Lima",
+    "Outsourcing de TI Perú"
   ],
   alternates: {
     canonical: "https://ozybase.com/soporte",

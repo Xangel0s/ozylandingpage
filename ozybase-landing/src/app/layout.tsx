@@ -28,15 +28,16 @@ export const metadata: Metadata = {
   description: "Servicios profesionales de TI y soporte técnico de sistemas 24/7, agentes de inteligencia artificial y digitalización de procesos para empresas en Perú y Latinoamérica.",
   keywords: [
     "OzyBase",
-    "Soporte Técnico para empresas",
-    "Soporte de Sistemas",
+    "Soporte Técnico de TI en Perú",
+    "Soporte Técnico de TI en Lima",
+    "Soporte de sistemas en Comas",
+    "Soporte técnico híbrido presencial y remoto",
+    "Especialista de soporte técnico TI",
+    "Seguridad garantizada y backups",
     "Agentes de IA",
     "Automatización con Inteligencia Artificial",
-    "Digitalización de procesos",
-    "Migración de Excel a web",
-    "Outsourcing de TI",
-    "Monitoreo autónomo de servidores",
-    "Soporte TI 24/7"
+    "Digitalización de procesos en Perú",
+    "Outsourcing de TI Lima"
   ],
   authors: [{ name: "OzyBase S.A.C." }],
   creator: "OzyBase",
