@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calculator, FileText, CheckCircle2, Server } from "lucide-react";
+import { Calculator, FileText, CheckCircle2, Server, Check } from "lucide-react";
 
 export default function ProposalCalculator() {
   const [supportType, setSupportType] = useState<"fisico" | "sistemas" | "hibrido">("sistemas");
@@ -13,6 +13,8 @@ export default function ProposalCalculator() {
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
   const [deviceDetectedCount, setDeviceDetectedCount] = useState<number | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [hasDownloadedPDF, setHasDownloadedPDF] = useState(false);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -89,11 +91,13 @@ Quedo a la espera de que un ejecutivo de ventas revise esta configuración para 
     const encodedText = encodeURIComponent(message);
     const url = `https://wa.me/${phone}?text=${encodedText}`;
     window.open(url, "_blank");
+    setShowSuccessModal(true);
   };
 
   const handlePrint = () => {
     const printWindow = window.open("", "_blank");
     if (!printWindow) return;
+    setHasDownloadedPDF(true);
 
     const htmlContent = `
       <html>
@@ -433,6 +437,62 @@ Quedo a la espera de que un ejecutivo de ventas revise esta configuración para 
           </div>
         </div>
       </div>
+
+      {/* Success Modal Overlay */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 p-6 animate-[fadeIn_0.2s_ease-out]">
+          <div className="w-full max-w-md bg-[#0d0d0d] border border-border-subtle rounded-2xl p-8 relative shadow-2xl flex flex-col justify-between min-h-[500px]">
+            <div className="absolute top-0 left-0 w-full h-1 bg-[#D2F20B] rounded-t-2xl"></div>
+
+            <div className="my-auto text-center space-y-6">
+              <div className="w-16 h-16 rounded-full bg-success-neon/10 border border-success-neon/20 flex items-center justify-center mx-auto">
+                <Check className="w-8 h-8 text-success-neon" />
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-headline text-2xl font-bold text-white tracking-wide uppercase">
+                  Solicitud Recibida
+                </h3>
+                <p className="text-xs md:text-sm text-terminal-gray max-w-xs mx-auto leading-relaxed">
+                  Gracias por ponerte en contacto. Un ingeniero de OzyBase analizará tus requerimientos y te responderá en menos de 15 minutos.
+                </p>
+              </div>
+
+              <div className="space-y-4 pt-4">
+                <button
+                  onClick={() => setShowSuccessModal(false)}
+                  className="w-full py-3 border border-border-subtle text-white hover:border-[#D2F20B] hover:text-[#D2F20B] rounded-lg text-xs font-mono font-bold transition-all uppercase tracking-wider"
+                >
+                  Enviar otra consulta
+                </button>
+
+                {!hasDownloadedPDF && (
+                  <button
+                    onClick={handlePrint}
+                    className="w-full py-3 bg-success-neon/10 hover:bg-[#D2F20B] text-success-neon hover:text-black border border-success-neon/30 hover:border-success-neon rounded-lg text-xs font-mono font-bold transition-all uppercase tracking-wider flex items-center justify-center gap-2"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Descargar Resumen Técnico PDF
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="flex justify-between items-end border-t border-white/5 pt-4 font-mono text-[9px] text-terminal-gray/60 mt-8">
+              <div className="space-y-0.5 text-left">
+                <div>REF: OZY_SALES_PRTCL_441</div>
+                <div>STATUS: SECURE_UPTIME</div>
+              </div>
+              <div className="flex gap-0.5 items-end h-4 pb-0.5">
+                <span className="w-0.5 h-1.5 bg-success-neon/30 animate-[pulse_1s_infinite]"></span>
+                <span className="w-0.5 h-3 bg-success-neon/60 animate-[pulse_1.2s_infinite]"></span>
+                <span className="w-0.5 h-2 bg-success-neon/80 animate-[pulse_0.8s_infinite]"></span>
+                <span className="w-0.5 h-4 bg-success-neon animate-[pulse_1.5s_infinite]"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
