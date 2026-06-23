@@ -15,7 +15,7 @@ const servicesList: ServiceOption[] = [
     name: "Soporte Técnico",
     message: "Hola OzyBase, estoy interesado en el servicio de Soporte Técnico para mis sistemas u oficinas.",
     icon: Server,
-    description: "Remoto / Presencial",
+    description: "Consulta por WhatsApp - Remoto/Presencial",
   },
   {
     name: "Agentes IA",
@@ -85,7 +85,7 @@ export default function WhatsAppFloating() {
                 <div>
                   <span className="font-bold block group-hover:text-success-neon">{service.name}</span>
                   <span className="text-[10px] text-terminal-gray/80 line-clamp-1">
-                    {service.description || "Consultar por WhatsApp"}
+                    {service.description || "Consulta por WhatsApp"}
                   </span>
                 </div>
               </button>
