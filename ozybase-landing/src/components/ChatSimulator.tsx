@@ -63,7 +63,7 @@ const steps: StepMessage[] = [
     avatarBg: "bg-blue-950/30 border-blue-500/20 text-blue-400",
     timeLabel: "Hace un momento",
     bubbleBg: "bg-blue-950/[0.03] backdrop-blur-md border-blue-500/10 text-blue-100",
-    text: "Entendido Robin. Procedo a aplicar el parche de índices y reiniciar la caché de consultas.",
+    text: "Entendido Ozy. Procedo a aplicar el parche de índices y reiniciar la caché de consultas.",
   },
   {
     id: 5,
