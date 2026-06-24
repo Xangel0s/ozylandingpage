@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -39,13 +40,13 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center pt-4 scroll-reveal">
-            <a
-              href="#contacto"
+            <Link
+              href="/contacto?servicio=ventas"
               className="w-full sm:w-auto border border-success-neon bg-success-neon text-black font-mono text-sm font-bold px-8 py-4 rounded hover:bg-transparent hover:text-success-neon transition-all flex items-center justify-center gap-2 group"
             >
               Contactar Ventas
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
             <a
               href="#servicios"
               className="w-full sm:w-auto bg-transparent text-white font-mono text-sm font-bold px-8 py-4 rounded border border-border-subtle hover:border-success-neon transition-colors flex items-center justify-center"

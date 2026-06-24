@@ -79,7 +79,7 @@ export default function Navbar() {
         {/* CTA and Mobile Menu Button */}
         <div className="flex items-center gap-4">
           <Link
-            href="/contacto"
+            href="/contacto?servicio=ventas"
             className="hidden md:flex items-center gap-2 border border-success-neon bg-success-neon text-black font-mono text-sm font-bold px-5 py-2.5 rounded transition-all hover:bg-transparent hover:text-success-neon active:scale-95"
           >
             <MessageSquare className="w-4.5 h-4.5" />
@@ -111,7 +111,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/contacto"
+            href="/contacto?servicio=ventas"
             onClick={() => setIsOpen(false)}
             className="flex items-center justify-center gap-2 border border-success-neon bg-success-neon text-black font-mono text-sm font-bold py-3.5 rounded transition-all hover:bg-transparent hover:text-success-neon"
           >

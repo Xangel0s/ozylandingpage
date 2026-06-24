@@ -20,7 +20,7 @@ export default function Footer() {
               <Link href="/soporte" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Soporte</Link>
               <Link href="/agentes-ia" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Agentes IA</Link>
               <Link href="/digitalizacion" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Digitalización</Link>
-              <Link href="/contacto" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Ventas</Link>
+              <Link href="/contacto?servicio=ventas" className="text-terminal-gray font-mono text-sm hover:text-success-neon transition-colors">Ventas</Link>
             </div>
           </div>
         </div>

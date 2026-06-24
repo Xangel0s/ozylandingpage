@@ -11,7 +11,7 @@ export default function CTA({
   title = "¿LISTO PARA ASEGURAR EL CORE?",
   description = "Únete a la red especializada y despliega tu primer cluster de agentes autónomos hoy mismo.",
   ctaText = "CONTACTAR VENTAS",
-  ctaLink = "/contacto",
+  ctaLink = "/contacto?servicio=ventas",
 }: CTAProps) {
   return (
     <section className="py-24 bg-success-neon text-black w-full border-t border-border-subtle">

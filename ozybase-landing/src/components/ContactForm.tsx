@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Zap, ShieldCheck, CreditCard, CheckCircle2, ArrowRight, Loader2 } from "lucide-react";
 
 export default function ContactForm() {
@@ -14,6 +14,37 @@ export default function ContactForm() {
   });
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const servicioParam = params.get("servicio");
+      const modeloParam = params.get("modelo");
+
+      if (servicioParam) {
+        const serviceMap: { [key: string]: string } = {
+          "soporte": "Soporte Técnico",
+          "agentes": "Agentes IA",
+          "digitalizacion": "Digitalización de Procesos",
+          "diagnostico": "Plataforma de Diagnósticos",
+          "ventas": "Consulta de Ventas",
+        };
+        const mappedValue = serviceMap[servicioParam.toLowerCase()];
+        if (mappedValue) {
+          setFormData((prev) => ({ ...prev, servicio: mappedValue }));
+        }
+      } else if (modeloParam) {
+        const modeloMap: { [key: string]: string } = {
+          "autogestionado": "Agentes IA",
+          "soporte": "Soporte Técnico",
+        };
+        const mappedValue = modeloMap[modeloParam.toLowerCase()];
+        if (mappedValue) {
+          setFormData((prev) => ({ ...prev, servicio: mappedValue }));
+        }
+      }
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -222,6 +253,7 @@ export default function ContactForm() {
                       <option>Agentes IA</option>
                       <option>Digitalización de Procesos</option>
                       <option>Plataforma de Diagnósticos</option>
+                      <option>Consulta de Ventas</option>
                     </select>
                   </div>
 
