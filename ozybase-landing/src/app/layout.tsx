@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Inter, JetBrains_Mono } from "next/font/google";
 import ScrollRevealManager from "@/components/ScrollRevealManager";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
@@ -82,6 +83,26 @@ export default function RootLayout({
       style={{ colorScheme: "dark" }}
       suppressHydrationWarning
     >
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18290656203"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          
+          gtag('consent', 'default', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+          });
+
+          gtag('js', new Date());
+          gtag('config', 'AW-18290656203');
+        `}
+      </Script>
       <body
         className="min-h-full flex flex-col bg-background text-foreground selection:bg-success-neon selection:text-black"
         suppressHydrationWarning
